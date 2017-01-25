@@ -150,6 +150,40 @@ function edb_register_meta_boxes( $meta_boxes ) {
     );
     
     $meta_boxes[] = array(
+        'id'         => 'faq',
+        'title'      => __( 'FAQ', 'edb' ),
+        'post_types' => array( 'edb_faqs' ),
+        'context'    => 'normal',
+        'priority'   => 'high',
+        'fields' => array(
+            array(
+                'name'  => __( 'Question', 'edb' ),
+                'id'    => $prefix . 'faq_question',
+                'type'  => 'textarea',
+                'class' => 'faq-question'
+            ),
+            array(
+                'name'  => __( 'Answer', 'edb' ),
+                'id'    => $prefix . 'faq_answer',
+                'type'  => 'textarea',
+                'class' => 'faq-answer'
+            ),
+            array(
+                'name'  => __( 'Background Color', 'edb' ),
+                'id'    => $prefix . 'faq_background_color',
+                'type'  => 'color',
+                'class' => 'faq-color'
+            ),
+            array(
+                'name'  => __( 'Text Color', 'edb' ),
+                'id'    => $prefix . 'faq_text_color',
+                'type'  => 'color',
+                'class' => 'faq-color'
+            )
+        )
+    );
+    
+    $meta_boxes[] = array(
         'id'         => 'why-we-love',
         'title'      => __( 'Why we love', 'edb' ),
         'post_types' => array( 'product' ),
