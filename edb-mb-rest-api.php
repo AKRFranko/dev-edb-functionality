@@ -146,10 +146,25 @@ class MB_Rest_API {
     $post_data = json_decode( $json, true );
     
     if(json_last_error() == JSON_ERROR_NONE){
+      // foreach( $post_data as $field_name => $value ){
+      //   $output[ $field_name ] = update_post_meta( $object->ID, $field_name, strip_tags( $value ) );
+      // }
       foreach( $post_data as $field_name => $value ){
-        $output[ $field_name ] = update_post_meta( $object->ID, $field_name, strip_tags( $value ) );
+        if(is_array($value)){
+          delete_post_meta($object->ID, $field_name);
+          
+          foreach ($value as $v) {
+            var_dump($v);
+            add_post_meta($object->ID, $field_name, $v );
+          }
+        }else{
+          $output[ $field_name ] = update_post_meta( $object->ID, $field_name, strip_tags( $value ) );  
+        }
+        
       }
+      
     }
+    
     
     
     return $output;
