@@ -20,6 +20,12 @@ function edb_woocommerce_support() {
 
 add_action( 'after_setup_theme', 'edb_woocommerce_support' );
 
+function edb_mime_types($mimes) {
+  $mimes['svg'] = 'image/svg+xml';
+  return $mimes;
+}
+add_filter('upload_mimes', 'edb_mime_types');
+
 function edb_remove_menus(){
   // remove_menu_page( 'index.php' );                  //Dashboard
   // remove_menu_page( 'jetpack' );                    //Jetpack* 
