@@ -20,11 +20,13 @@ function edb_woocommerce_support() {
 
 add_action( 'after_setup_theme', 'edb_woocommerce_support' );
 
-function edb_mime_types($mimes) {
-  $mimes['svg'] = 'image/svg+xml';
-  return $mimes;
+function edb_add_svg_to_upload_mimes( $upload_mimes ) {
+  $upload_mimes['svg'] = 'image/svg+xml';
+  $upload_mimes['svgz'] = 'image/svg+xml';
+  return $upload_mimes;
 }
-add_filter('upload_mimes', 'edb_mime_types');
+add_filter( 'upload_mimes', 'edb_add_svg_to_upload_mimes', 10, 1 );
+
 
 function edb_remove_menus(){
   // remove_menu_page( 'index.php' );                  //Dashboard
