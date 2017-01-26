@@ -184,6 +184,23 @@ function edb_register_meta_boxes( $meta_boxes ) {
     );
     
     $meta_boxes[] = array(
+        'id'         => 'inspiration',
+        'title'      => __( 'Inspiration', 'edb' ),
+        'post_types' => array( 'edb_inspirations' ),
+        'context'    => 'normal',
+        'priority'   => 'high',
+        'fields' => array(
+            array(
+                'name'  => __( 'Images', 'edb' ),
+                'id'    => $prefix . 'inspiration_images',
+                'type'  => 'image_advanced',
+                'multiple'=>true,
+                'class' => 'inspiration-images'
+            )
+        )
+    );
+    
+    $meta_boxes[] = array(
         'id'         => 'why-we-love',
         'title'      => __( 'Why we love', 'edb' ),
         'post_types' => array( 'product' ),

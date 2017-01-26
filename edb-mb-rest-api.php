@@ -51,7 +51,18 @@ class MB_Rest_API {
         if ( empty( $field['id'] ) ) {
           continue;
         }
-        $output[ $field['id'] ] = rwmb_get_value( $field['id'] );
+        $value = rwmb_get_value( $field['id'] );
+        if(is_array($value)){
+          $nvalue = array();
+          foreach($value as $k => $v ){
+            // $v['arrayKey'] = $k;
+            $nvalue[] = $v;
+          }
+          $output[ $field['id'] ] = $nvalue;
+        }else{
+          $output[ $field['id'] ] =  $value;
+        }
+        
       }
     }
 
@@ -72,7 +83,16 @@ class MB_Rest_API {
     
     
     foreach( $post_data as $field_name => $value ){
-      $output[ $field_name ] = update_post_meta( $object->ID, $field_name, strip_tags( $value ) );
+      if(is_array($value)){
+        delete_post_meta($object->ID, $field_name);
+        foreach ($value as $v) {
+          var_dump($v);
+          add_post_meta($object->ID, $field_name, $v );
+        }
+      }else{
+        $output[ $field_name ] = update_post_meta( $object->ID, $field_name, strip_tags( $value ) );  
+      }
+      
     }
     
     
