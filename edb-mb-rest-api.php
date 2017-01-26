@@ -28,7 +28,7 @@ class MB_Rest_API {
     ) );
     register_rest_field( $this->get_types( 'taxonomy' ), 'meta_box', array(
       'get_callback' => array( $this, 'get_term_meta' ),
-      // 'update_callback' => array( $this, 'update_term_meta' ),
+      'update_callback' => array( $this, 'update_term_meta' ),
     ) );
   }
 
