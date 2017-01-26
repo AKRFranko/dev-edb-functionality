@@ -85,6 +85,7 @@ class MB_Rest_API {
     foreach( $post_data as $field_name => $value ){
       if(is_array($value)){
         delete_post_meta($object->ID, $field_name);
+        
         foreach ($value as $v) {
           var_dump($v);
           add_post_meta($object->ID, $field_name, $v );
