@@ -114,6 +114,12 @@ function edb_register_meta_boxes( $meta_boxes ) {
                 'type'  => 'text',
                 'class' => 'slide-url'
             ),
+            array(
+                'name'  => __( 'URL', 'edb' ),
+                'id'    => $prefix . 'sort_order',
+                'type'  => 'number',
+                'class' => 'sort-order'
+            ),
         )
     );
     
@@ -129,6 +135,12 @@ function edb_register_meta_boxes( $meta_boxes ) {
                 'id'    => $prefix . 'feature_url',
                 'type'  => 'text',
                 'class' => 'feature-url'
+            ),
+            array(
+                'name'  => __( 'URL', 'edb' ),
+                'id'    => $prefix . 'sort_order',
+                'type'  => 'number',
+                'class' => 'sort-order'
             ),
         )
     );
@@ -179,14 +191,20 @@ function edb_register_meta_boxes( $meta_boxes ) {
                 'id'    => $prefix . 'faq_text_color',
                 'type'  => 'color',
                 'class' => 'faq-color'
-            )
+            ),
+            array(
+                'name'  => __( 'URL', 'edb' ),
+                'id'    => $prefix . 'sort_order',
+                'type'  => 'number',
+                'class' => 'sort-order'
+            ),
         )
     );
     
     $meta_boxes[] = array(
         'id'         => 'inspiration',
         'title'      => __( 'Inspiration', 'edb' ),
-        'post_types' => array( 'edb_inspirations' ),
+        'post_types' =>  'edb_inspirations',
         'context'    => 'normal',
         'priority'   => 'high',
         'fields' => array(
@@ -196,7 +214,13 @@ function edb_register_meta_boxes( $meta_boxes ) {
                 'type'  => 'image_advanced',
                 'multiple'=>true,
                 'class' => 'inspiration-images'
-            )
+            ),
+            array(
+                'name'  => __( 'URL', 'edb' ),
+                'id'    => $prefix . 'sort_order',
+                'type'  => 'number',
+                'class' => 'sort-order'
+            ),
         )
     );
     

@@ -28,7 +28,7 @@ class MB_Rest_API {
     ) );
     register_rest_field( $this->get_types( 'taxonomy' ), 'meta_box', array(
       'get_callback' => array( $this, 'get_term_meta' ),
-      'update_callback' => array( $this, 'update_term_meta' ),
+      // 'update_callback' => array( $this, 'update_term_meta' ),
     ) );
   }
 
@@ -87,7 +87,7 @@ class MB_Rest_API {
         delete_post_meta($object->ID, $field_name);
         
         foreach ($value as $v) {
-          var_dump($v);
+          // var_dump($v);
           add_post_meta($object->ID, $field_name, $v );
         }
       }else{
@@ -154,7 +154,7 @@ class MB_Rest_API {
           delete_post_meta($object->ID, $field_name);
           
           foreach ($value as $v) {
-            var_dump($v);
+            // var_dump($v);
             add_post_meta($object->ID, $field_name, $v );
           }
         }else{
