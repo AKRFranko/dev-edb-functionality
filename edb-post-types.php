@@ -115,7 +115,7 @@ function edb_register_meta_boxes( $meta_boxes ) {
                 'class' => 'slide-url'
             ),
             array(
-                'name'  => __( 'URL', 'edb' ),
+                'name'  => __( 'Sort Order', 'edb' ),
                 'id'    => $prefix . 'sort_order',
                 'type'  => 'number',
                 'class' => 'sort-order'
@@ -137,10 +137,17 @@ function edb_register_meta_boxes( $meta_boxes ) {
                 'class' => 'feature-url'
             ),
             array(
-                'name'  => __( 'URL', 'edb' ),
+                'name'  => __( 'Sort Order', 'edb' ),
                 'id'    => $prefix . 'sort_order',
                 'type'  => 'number',
                 'class' => 'sort-order'
+            ),
+            array(
+                'name'  => __( 'Card Type', 'edb' ),
+                'id'    => $prefix . 'card_type',
+                'type'  => 'select',
+                'class' => 'card-type',
+                'options' => array('standard'=>'standard','square'=>'square','full'=>'full','full square'=>'full square')
             ),
         )
     );
