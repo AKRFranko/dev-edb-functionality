@@ -122,7 +122,7 @@ function edb_rest_insert_thumbnail_url() {
      }
 }
 function edb_populate_jwt( $data, $user ){
-  $data['user_id'] = $user->id;
+  // $data['user_id'] = $user->id;
   return $data;
 }
 //register actions
