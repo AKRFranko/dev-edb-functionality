@@ -74,6 +74,7 @@ function edb_rest_register_fields(){
   );
 }
 
+
 function edb_get_auth_user( $data ) {
   if ( !(is_user_logged_in()) ){
     $current_user = null;
@@ -83,6 +84,7 @@ function edb_get_auth_user( $data ) {
   return $current_user;
 }
 
+
 function edb_login( $data ) {
   $signon = wp_signon( 
     array( 
@@ -91,6 +93,7 @@ function edb_login( $data ) {
       'remember_me' => true ), true );
   return  $signon ;
 }
+
 function edb_logout( ) {
   return  wp_logout() ;
 }
