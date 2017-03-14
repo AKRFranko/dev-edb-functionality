@@ -151,7 +151,7 @@ add_action( 'rest_api_init', function() {
     header_remove('Access-Control-Expose-Headers');
     header('Access-Control-Allow-Headers: Authorization, X-Requested-With, Content-Type, Content-Disposition');
     header('Access-Control-Allow-Methods: HEAD, OPTIONS, GET, PUT, POST, PATCH, DELETE');
-    header('Access-Control-Allow-Origin: '. $_SERVER['HTTP_REFERER']);
+    header('Access-Control-Allow-Origin: http://installatex.ca');
     return $value;
   });
 }, 15 );
