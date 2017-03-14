@@ -74,6 +74,15 @@ function edb_rest_register_fields(){
   );
 }
 
+function edb_get_auth_user( $data ) {
+  if ( !(is_user_logged_in()) ){
+    $current_user = null;
+  }else{
+    $current_user = wp_get_current_user(); 
+  }
+  return $current_user;
+}
+
 //integrate with WP-REST-API
 function edb_rest_insert_thumbnail_url() {
      $postTypes = array(
@@ -99,6 +108,11 @@ add_action( 'rest_api_init', 'edb_rest_register_fields' );
 add_action( 'rest_api_init', function() {
     
   remove_filter( 'rest_pre_serve_request', 'rest_send_cors_headers' );
+  
+  register_rest_route( 'wp/v2', '/authenticated', array(
+    'methods' => 'GET',
+    'callback' => 'edb_get_auth_user',
+  ));
   
   add_filter( 'rest_pre_serve_request', function( $value ) {
     header_remove('Access-Control-Allow-Headers');
