@@ -83,6 +83,18 @@ function edb_get_auth_user( $data ) {
   return $current_user;
 }
 
+function edb_login( $data ) {
+  $signon = wp_signon( 
+    array( 
+      'user_login' => $data['email'] , 
+      'user_password' => $data['password'], 
+      'remember_me' => true ) );
+  return json_encode( $signon );
+}
+function edb_logout( ) {
+  return json_encode( wp_logout() );
+}
+
 //integrate with WP-REST-API
 function edb_rest_insert_thumbnail_url() {
      $postTypes = array(
@@ -112,6 +124,14 @@ add_action( 'rest_api_init', function() {
   register_rest_route( 'wp/v2', '/authenticated', array(
     'methods' => 'GET',
     'callback' => 'edb_get_auth_user',
+  ));
+  register_rest_route( 'wp/v2', '/login', array(
+    'methods' => 'POST',
+    'callback' => 'edb_login',
+  ));
+  register_rest_route( 'wp/v2', '/logout', array(
+    'methods' => 'POST',
+    'callback' => 'edb_logout',
   ));
   
   add_filter( 'rest_pre_serve_request', function( $value ) {
