@@ -107,14 +107,10 @@ function edb_register($data){
   
   
   $id = wp_insert_user( array(
-    'user_login'  => $request->get_param('username'),
-    'user_email'  => $request->get_param('email'),
-    'user_pass'    => $request->get_param('password'),
-    'nickname'    => $request->get_param('nickname'),
-    'first_name'  => $request->get_param('name'),
-    'user_url'    => $request->get_param('web'),
-    'role'      => $role,
-  ) );
+    'user_login'  => $data['username'],
+    'user_email'  => $data['username'],
+    'user_pass'   => $data['password']
+  ));
   
   if (is_wp_error($id)){
     return $id;
