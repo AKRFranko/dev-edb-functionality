@@ -91,6 +91,11 @@ function edb_login( $data ) {
       'user_login' => $data['email'] , 
       'user_password' => $data['password'], 
       'remember_me' => true ) );
+      if ( is_wp_error( $signon ) ) {
+          return null;
+      } else {
+          wp_set_auth_xcookie( $signon->ID, true );
+      }
   return  $signon ;
 }
 
@@ -137,6 +142,7 @@ add_action( 'rest_api_init', function() {
     'callback' => 'edb_logout',
   ));
   
+  
   add_filter( 'rest_pre_serve_request', function( $value ) {
     header_remove('Access-Control-Allow-Headers');
     header_remove('Access-Control-Allow-Origin');
@@ -145,6 +151,8 @@ add_action( 'rest_api_init', function() {
     header_remove('Access-Control-Expose-Headers');
     header('Access-Control-Allow-Headers: Authorization, X-Requested-With, Content-Type, Content-Disposition');
     header('Access-Control-Allow-Methods: HEAD, OPTIONS, GET, PUT, POST, PATCH, DELETE');
+    
+    header_remove('Access-Control-Allow-Origin', $_SERVER['HTTP_HOST']);
     return $value;
   });
 }, 15 );
