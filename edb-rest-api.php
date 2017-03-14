@@ -103,6 +103,26 @@ function edb_logout( ) {
   return  wp_logout() ;
 }
 
+function edb_register($data){
+  
+  
+  $id = wp_insert_user( array(
+    'user_login'  => $request->get_param('username'),
+    'user_email'  => $request->get_param('email'),
+    'user_pass'    => $request->get_param('password'),
+    'nickname'    => $request->get_param('nickname'),
+    'first_name'  => $request->get_param('name'),
+    'user_url'    => $request->get_param('web'),
+    'role'      => $role,
+  ) );
+  
+  if (is_wp_error($id)){
+    return $id;
+  }
+  
+  return edb_login( $data );
+}
+
 //integrate with WP-REST-API
 function edb_rest_insert_thumbnail_url() {
      $postTypes = array(
@@ -144,6 +164,10 @@ add_action( 'rest_api_init', function() {
   register_rest_route( 'wp/v2', '/logout', array(
     'methods' => 'POST',
     'callback' => 'edb_logout',
+  ));
+  register_rest_route( 'wp/v2', '/register', array(
+    'methods' => 'POST',
+    'callback' => 'edb_register',
   ));
   
   
