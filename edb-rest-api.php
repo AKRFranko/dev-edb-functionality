@@ -90,7 +90,7 @@ function edb_login( $data ) {
     array( 
       'user_login' => $data['email'] , 
       'user_password' => $data['password'], 
-      'remember_me' => true ), true );
+      'remember_me' => true ) );
   return  $signon ;
 }
 
