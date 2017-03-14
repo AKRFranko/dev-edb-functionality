@@ -89,10 +89,10 @@ function edb_login( $data ) {
       'user_login' => $data['email'] , 
       'user_password' => $data['password'], 
       'remember_me' => true ), true );
-  return json_encode( $signon );
+  return  $signon ;
 }
 function edb_logout( ) {
-  return json_encode( wp_logout() );
+  return  wp_logout() ;
 }
 
 //integrate with WP-REST-API
