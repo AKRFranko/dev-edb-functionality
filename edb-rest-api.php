@@ -88,7 +88,7 @@ function edb_login( $data ) {
     array( 
       'user_login' => $data['email'] , 
       'user_password' => $data['password'], 
-      'remember_me' => true ) );
+      'remember_me' => true ), true );
   return json_encode( $signon );
 }
 function edb_logout( ) {
