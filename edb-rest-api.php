@@ -147,7 +147,7 @@ add_action( 'rest_api_init', function() {
     header_remove('Access-Control-Allow-Headers');
     header_remove('Access-Control-Allow-Origin');
     header_remove('Access-Control-Allow-Methods');
-    header_remove('Access-Control-Allow-Credentials');
+    // header_remove('Access-Control-Allow-Credentials');
     header_remove('Access-Control-Expose-Headers');
     header('Access-Control-Allow-Headers: Authorization, X-Requested-With, Content-Type, Content-Disposition');
     header('Access-Control-Allow-Methods: HEAD, OPTIONS, GET, PUT, POST, PATCH, DELETE');
