@@ -149,10 +149,11 @@ add_action( 'rest_api_init', function() {
     header_remove('Access-Control-Allow-Methods');
     header_remove('Access-Control-Allow-Credentials');
     header_remove('Access-Control-Expose-Headers');
+    header('Access-Control-Allow-Credentials: true');
     header('Access-Control-Allow-Headers: Authorization, X-Requested-With, Content-Type, Content-Disposition');
     header('Access-Control-Allow-Methods: HEAD, OPTIONS, GET, PUT, POST, PATCH, DELETE');
     header('Access-Control-Allow-Origin: http://installatex.ca');
-    header('Access-Control-Allow-Credentials: true');
+    
     return $value;
   });
 }, 15 );
