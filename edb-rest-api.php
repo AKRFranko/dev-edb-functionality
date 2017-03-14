@@ -121,6 +121,10 @@ function edb_rest_insert_thumbnail_url() {
        register_rest_field( $type ,'featured_image',  $cb );
      }
 }
+function edb_populate_jwt( $data, $user ){
+  $data['user_id'] = $user->ID;
+  return $data;
+}
 //register actions
 add_action( 'rest_api_init', 'edb_rest_insert_thumbnail_url' );
 add_action( 'rest_api_init', 'edb_rest_register_fields' );
@@ -128,7 +132,7 @@ add_action( 'rest_api_init', 'edb_rest_register_fields' );
 add_action( 'rest_api_init', function() {
     
   remove_filter( 'rest_pre_serve_request', 'rest_send_cors_headers' );
-  
+  add_filter('jwt_auth_token_before_dispatch', 'edb_populate_jwt');
   register_rest_route( 'wp/v2', '/authenticated', array(
     'methods' => 'GET',
     'callback' => 'edb_get_auth_user',
