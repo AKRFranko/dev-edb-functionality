@@ -23,6 +23,6 @@ function edb_woocommerce_rest_prepare_product( $response, $post ){
   return $response;
 }
 
+
 add_filter( 'woocommerce_rest_prepare_product', 'edb_woocommerce_rest_prepare_product', 90, 2 );
 add_filter( 'woocommerce_rest_insert_product', 'edb_woocommerce_rest_insert_product', 90, 2 );
-

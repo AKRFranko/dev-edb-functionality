@@ -232,20 +232,20 @@ function edb_register_meta_boxes( $meta_boxes ) {
     );
     
     $meta_boxes[] = array(
-        'id'         => 'why-we-love',
-        'title'      => __( 'Why we love', 'edb' ),
+        'id'         => 'edb-extra',
+        'title'      => __( 'EDB', 'edb' ),
         'post_types' => array( 'product' ),
         'context'    => 'normal',
         'priority'   => 'high',
         'fields' => array(
             array(
-                'name'  => __( 'Title', 'edb' ),
+                'name'  => __( 'Why we love Title', 'edb' ),
                 'id'    => $prefix . 'why_we_love_title',
                 'type'  => 'text',
                 'class' => 'why-we-love-title'
             ),
             array(
-                'name'  => __( 'Title', 'edb' ),
+                'name'  => __( 'Why we love content', 'edb' ),
                 'id'    => $prefix . 'why_we_love_content',
                 'type'  => 'textarea',
                 'class' => 'why-we-love-content'
@@ -267,6 +267,18 @@ function edb_register_meta_boxes( $meta_boxes ) {
                 'id'    => $prefix . 'anatomy_fr',
                 'type'  => 'image',
                 'class' => 'anatomy-fr'
+            ),
+            array(
+                'name'  => __( 'Is Bucket', 'edb' ),
+                'id'    => $prefix . 'is_bucket',
+                'type'  => 'checkbox',
+                'class' => 'is-bucket'
+            ),
+            array(
+                'name'  => __( 'Bucket Slug', 'edb' ),
+                'id'    => $prefix . 'bucket_slug',
+                'type'  => 'text',
+                'class' => 'bucket-slug'
             )
         )
     );

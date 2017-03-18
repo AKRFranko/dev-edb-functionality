@@ -103,6 +103,10 @@ function edb_logout( ) {
   return  wp_logout() ;
 }
 
+
+
+
+
 function edb_register($data){
   
   
@@ -141,12 +145,218 @@ function edb_populate_jwt( $data, $user ){
   $data['user_id'] = $user->id;
   return $data;
 }
+
+// function edb_get_catalog_entry( $product ){
+//   $copy = clone $product;
+ 
+//   $name = $product->post->post_title;
+//   $description = $product->post->post_content;
+  
+//   $product->post = $product->id;
+//   $product->name = $name;
+//   $product->description = $description;
+//   return $product;
+// }
+
+// $magic_properties = array(
+// // 'width',
+// // 'length',
+// // 'height',
+// // 'weight',
+// 'price',
+// 'regular_price',
+// 'sale_price',
+// 'product_image_gallery',
+// // 'sku',
+// 'stock',
+// // 'downloadable',
+// // 'virtual',
+// // 'sold_individually',
+// 'tax_status',
+// 'tax_class',
+// // 'manage_stock',
+// // 'stock_status',
+// // 'backorders',
+// // 'featured',
+// // 'visibility',
+// 'variation_id');
+// function expand_magic_properties( $product ){
+//   global $magic_properties;
+//   foreach($magic_properties as $prop ){
+//     $product->{$prop} = $product->{$prop};
+//   }
+//   return $product;
+// }
+
+
+// function expand_metabox_properties( $product ){
+//   $meta_boxes = RWMB_Core::get_meta_boxes();
+//   $product->meta_box = array();
+//   foreach ($meta_boxes as $meta_box) {
+//       $meta_box = RW_Meta_Box::normalize($meta_box);
+      
+//       if (!in_array($product->post->post_type, $meta_box['post_types'])) {
+//           continue;
+//       }
+//       foreach ($meta_box['fields'] as $field) {
+//         if (!empty($field['id'])) {
+//           $product->meta_box[ $field['id'] ] = rwmb_meta(  $field['id'], $field, $product->post->ID );
+//         }
+//       }
+//   }
+//   return $product;
+// }
+
+// function edb_catalog_item( $data ){
+//   return $data;
+//   global $magic_properties;
+//   $full = (array) $data;
+//   $variation =(array) $full['variation'];
+//   $product = (array) $full['product'];
+//   $post = (array) $full['product']->post;
+//   $display =  array(
+//     'wc_variation_id'=> $variation['variation_id'],
+//     'wc_product_id'=> $product['id'],
+//     'wc_product_name'=>$post['post_title'],
+//     'wc_product_description'=>$post['post_content']
+//   );
+//   foreach($magic_properties as $prop){
+//     if(isset($product[$prop])){
+//       $display["wc_".$prop] = $product[$prop];
+//     }
+//     if(isset($variation[$prop])){
+//       $display["wc_".$prop] = $variation[$prop];
+//     }
+//   }
+//   foreach($product['meta_box'] as $prop => $val ){
+//     $display[$prop]=$val;
+//   }
+  
+//   return $display;
+  
+// }
+// function edb_load_catalog( $data ){
+  
+  
+ 
+//   $get_buckets  = array(
+//     'post_type'=> array('product'),
+//     'meta_query' => array( array(
+//         'key' => 'edb_is_bucket',
+//         'value' => '1', // date to compare to, before this one
+//         'compare' => '='
+//         )
+//     ),
+//     'fields' => 'ids'
+//   );
+//   $get_products = array(
+//     'post_type'=> array('product'),
+//     'meta_query' => array( array(
+//         'key' => 'edb_is_bucket',
+//         'value' => '1', // date to compare to, before this one
+//         'compare' => '!='
+//         )
+//     ),
+//     'fields' => 'ids'
+//   );
+
+  
+  
+//   $bucket_ids = get_posts( $get_buckets );
+//   $product_ids = get_posts( $get_products );
+  
+  
+  
+//   # references
+//   $all_buckets = array();
+//   $all_products = array();
+//   $all_variations = array();
+//   # result
+//   $catalog = array();
+  
+  
+//   # load bucket refs
+//   foreach( $bucket_ids as $bucket_id){
+//     $p = new WC_Product_Variable( $bucket_id );
+//     expand_magic_properties( $p );
+//     expand_metabox_properties( $p );
+//     $p->get_attributes();
+//     $p->variations = $p->get_available_variations();
+//     $all_buckets['pa_'.$p->meta_box['edb_bucket_slug']]=$p;
+    
+//   }
+  
+//   # load product refs
+//   foreach( $product_ids as $product_id){
+//     $p = new WC_Product_Variable( $product_id );
+//     expand_magic_properties( $p );
+//     expand_metabox_properties( $p );
+//     $p->get_attributes();
+//     // $p->meta = get_post_meta($product_id);
+//     $all_products[$product_id]=$p;
+//   }
+  
+  
+//   # duplicate entries based on attributes
+//   foreach( $all_products as $product_id => $product ){
+//     $product_variations = array();
+//     foreach( $product->get_available_variations() as $available_variation ){
+      
+//       $variation = new WC_Product_Variable( $available_variation['variation_id'] );
+//       $variation->get_attributes();
+//       $variation->product_attributes = $product->product_attributes;
+//       // expand_magic_properties( $variation );
+//       // expand_metabox_properties( $variation );
+//       $variation->variation = $available_variation;
+//       $variation->product = $product;
+//       $product_variations[] = $variation;
+//     }
+//     foreach($product_variations as $item ){
+//       $product_attrs = array_keys($product->product_attributes);
+//       $bucket_vars = array();
+//       foreach($product_attrs as $attr){
+        
+//         if(array_key_exists($attr, $all_buckets )){
+//           // $catalog[]=$item;    
+//           $bucket_vars[]=$all_buckets[$attr]->variations;
+//         }
+//       }
+//       if(empty($bucket_vars)){
+//         $catalog[]=edb_catalog_item($item);     
+//       }else{
+//           foreach($bucket_vars as $bucketitems){
+//             foreach($bucketitems as $bucketvar){
+//               foreach($product_attrs as $attr){
+//                 if(!empty($bucketvar['attributes']["attribute_$attr"])){
+//                   // var_dump($bucketvar['attributes']["attribute_$attr"]);
+//                   $newItem = clone $item;
+//                   $newItem->variation['attributes']["attribute_$attr"] = $bucketvar['attributes']["attribute_$attr"];
+//                   $catalog[]=edb_catalog_item($newItem);    
+//                 }  
+//               }
+              
+//             }
+//           }
+//       }
+
+      
+//     } 
+
+      
+//   }
+  
+  
+//   return array( 'count' => count($catalog), 'catalog' => (array) $catalog);//$catalog;//array('variations'=> $all_variations ,'catalog' => $catalog, 'buckets'=> $all_buckets,'products'=> $all_products);
+// }
+
 //register actions
 add_action( 'rest_api_init', 'edb_rest_insert_thumbnail_url' );
 add_action( 'rest_api_init', 'edb_rest_register_fields' );
 
 add_action( 'rest_api_init', function() {
-    
+  // $_SERVER['PHP_AUTH_USER']="ck_171751666f42c473b1746edc1eaa0a4392ac2e4a";
+  // $_SERVER['PHP_AUTH_PW']="cs_dd0dfe3cfd245660bf27f5fc25d8f98dd3dda14c";
+  
   remove_filter( 'rest_pre_serve_request', 'rest_send_cors_headers' );
   add_filter('jwt_auth_token_before_dispatch', 'edb_populate_jwt', 10, 2);
   register_rest_route( 'wp/v2', '/authenticated', array(
@@ -166,6 +376,11 @@ add_action( 'rest_api_init', function() {
     'callback' => 'edb_register',
   ));
   
+  // register_rest_route( 'wp/v2', '/catalog', array(
+  //   'methods' => 'GET',
+  //   'callback' => 'edb_load_catalog',
+  // ));
+  
   
   add_filter( 'rest_pre_serve_request', function( $value ) {
     header_remove('Access-Control-Allow-Headers');
@@ -176,8 +391,10 @@ add_action( 'rest_api_init', function() {
     header('Access-Control-Allow-Credentials: true');
     header('Access-Control-Allow-Headers: Authorization, X-Requested-With, Content-Type, Content-Disposition');
     header('Access-Control-Allow-Methods: HEAD, OPTIONS, GET, PUT, POST, PATCH, DELETE');
-    header('Access-Control-Allow-Origin: http://installatex.ca');
-    
+    $scheme = $_SERVER['REQUEST_SCHEME'];
+    $name = $_SERVER['REQUEST_SCHEME'];
+    header("Access-Control-Allow-Origin: $scheme://$name");
+    // var_dump($_SERVER);
     return $value;
   });
 }, 15 );
