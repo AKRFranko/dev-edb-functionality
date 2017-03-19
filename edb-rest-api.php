@@ -88,13 +88,13 @@ function edb_get_auth_user( $data ) {
 function edb_login( $data ) {
   $signon = wp_signon( 
     array( 
-      'user_login' => $data['email'] , 
+      'user_login' => $data['username'] , 
       'user_password' => $data['password'], 
       'remember_me' => true ) );
       if ( is_wp_error( $signon ) ) {
-          return null;
+          return $signon;
       } else {
-          wp_set_auth_xcookie( $signon->ID, true );
+          wp_set_auth_cookie( $signon->ID, true );
       }
   return  $signon ;
 }
@@ -352,10 +352,10 @@ function edb_populate_jwt( $data, $user ){
 //register actions
 add_action( 'rest_api_init', 'edb_rest_insert_thumbnail_url' );
 add_action( 'rest_api_init', 'edb_rest_register_fields' );
-
+// $_SERVER['PHP_AUTH_USER']="ck_171751666f42c473b1746edc1eaa0a4392ac2e4a";
+// $_SERVER['PHP_AUTH_PW']="cs_dd0dfe3cfd245660bf27f5fc25d8f98dd3dda14c";
 add_action( 'rest_api_init', function() {
-  // $_SERVER['PHP_AUTH_USER']="ck_171751666f42c473b1746edc1eaa0a4392ac2e4a";
-  // $_SERVER['PHP_AUTH_PW']="cs_dd0dfe3cfd245660bf27f5fc25d8f98dd3dda14c";
+  
   
   remove_filter( 'rest_pre_serve_request', 'rest_send_cors_headers' );
   add_filter('jwt_auth_token_before_dispatch', 'edb_populate_jwt', 10, 2);
@@ -391,9 +391,10 @@ add_action( 'rest_api_init', function() {
     header('Access-Control-Allow-Credentials: true');
     header('Access-Control-Allow-Headers: Authorization, X-Requested-With, Content-Type, Content-Disposition');
     header('Access-Control-Allow-Methods: HEAD, OPTIONS, GET, PUT, POST, PATCH, DELETE');
-    $scheme = $_SERVER['REQUEST_SCHEME'];
-    $name = $_SERVER['REQUEST_SCHEME'];
-    header("Access-Control-Allow-Origin: $scheme://$name");
+    // $scheme = $_SERVER['REQUEST_SCHEME'];
+    // $name = '45.56.104.172:8080';
+    // header("Access-Control-Allow-Origin: $scheme://$name");
+    header_remove('Access-Control-Allow-Origin');
     // var_dump($_SERVER);
     return $value;
   });
