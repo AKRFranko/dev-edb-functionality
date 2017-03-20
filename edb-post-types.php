@@ -102,8 +102,8 @@ function edb_register_meta_boxes( $meta_boxes ) {
     $prefix = 'edb_';
     // 1st meta box
     $meta_boxes[] = array(
-        'id'         => 'link',
-        'title'      => __( 'link', 'edb' ),
+        'id'         => 'EDB',
+        'title'      => __( 'EDB', 'edb' ),
         'post_types' => array( 'edb_slides' ),
         'context'    => 'normal',
         'priority'   => 'high',
@@ -124,8 +124,8 @@ function edb_register_meta_boxes( $meta_boxes ) {
     );
     
     $meta_boxes[] = array(
-        'id'         => 'link',
-        'title'      => __( 'link', 'edb' ),
+        'id'         => 'EDB',
+        'title'      => __( 'EDB', 'edb' ),
         'post_types' => array( 'edb_features' ),
         'context'    => 'normal',
         'priority'   => 'high',
@@ -153,8 +153,8 @@ function edb_register_meta_boxes( $meta_boxes ) {
     );
     
     $meta_boxes[] = array(
-        'id'         => 'link',
-        'title'      => __( 'link', 'edb' ),
+        'id'         => 'EDB',
+        'title'      => __( 'EDB', 'edb' ),
         'post_types' => array( 'edb_materials' ),
         'context'    => 'normal',
         'priority'   => 'high',
@@ -164,6 +164,12 @@ function edb_register_meta_boxes( $meta_boxes ) {
                 'id'    => $prefix . 'material_number',
                 'type'  => 'text',
                 'class' => 'material-number'
+            ),
+            array(
+                'name'  => __( 'material_attribute', 'edb' ),
+                'id'    => $prefix . 'material_attribute',
+                'type'  => 'text',
+                'class' => 'material-attribute'
             ),
         )
     );
