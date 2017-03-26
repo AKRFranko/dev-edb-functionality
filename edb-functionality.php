@@ -51,5 +51,29 @@ include 'edb-rest-api.php';
 include 'edb-wc-rest-api.php';
 include 'edb-user-extras.php';
 
+
+// add_filter('manage_edb_materials_posts_columns','filter_cpt_columns'  );
+
+// function filter_cpt_columns( $columns ) {
+//     // this will add the column to the end of the array
+//     $columns['material'] = 'Material';
+//     //add more columns as needed
+
+//     // as with all filters, we need to return the passed content/variable
+//     return $columns;
+// }
+
+// add_action( 'manage_posts_custom_column','action_custom_columns_content' , 10, 2 );
+// function action_custom_columns_content ( $column_id, $post_id ) {
+//     //run a switch statement for all of the custom columns created
+//     switch( $column_id ) { 
+//         case 'material':
+//             echo rwmb_meta('edb_material', null, $post_id);
+//         break;
+
+//         //add more items here as needed, just make sure to use the column_id in the filter for each new item.
+
+//   }
+// }
 // include 'mysitename-functionality-extra-rss-feeds.php';
 // include 'mysitename-functionality-remove-unwanted-assets.php';

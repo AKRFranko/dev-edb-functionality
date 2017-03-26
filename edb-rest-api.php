@@ -96,7 +96,12 @@ function edb_login( $data ) {
       } else {
           wp_set_auth_cookie( $signon->ID, true );
       }
-  return  $signon ;
+  if (is_wp_error($signon)){
+    return $signon;
+  }
+  $data = get_user_meta( $signon->ID );
+  $signon->meta=$data;
+  return  $signon;
 }
 
 function edb_logout( ) {
@@ -119,7 +124,6 @@ function edb_register($data){
   if (is_wp_error($id)){
     return $id;
   }
-  
   return edb_login( $data );
 }
 
@@ -380,7 +384,6 @@ add_action( 'rest_api_init', function() {
   //   'methods' => 'GET',
   //   'callback' => 'edb_load_catalog',
   // ));
-  
   
   add_filter( 'rest_pre_serve_request', function( $value ) {
     header_remove('Access-Control-Allow-Headers');

@@ -125,7 +125,7 @@ class MB_Rest_API {
         if ( empty( $field['id'] ) ) {
           continue;
         }
-        $single                 = $field['clone'] || ! $field['multiple'];
+        $single                 = $field['clone'] || !$field['multiple'];
         $output[ $field['id'] ] = get_term_meta( $object['id'], $field['id'], $single );
       }
     }
