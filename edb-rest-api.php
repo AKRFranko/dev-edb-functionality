@@ -84,7 +84,32 @@ function edb_get_auth_user( $data ) {
   return $current_user;
 }
 
+function edb_user( $user ){
+  $data = array(
+      'postcode'            => '',
+      'city'                => '',
+      'address_1'           => '',
+      'address_2'           => '',
+      'state'               => '',
+      'country'             => '',
+      'shipping_postcode'   => '',
+      'shipping_city'       => '',
+      'shipping_address_1'  => '',
+      'shipping_address_2'  => '',
+      'shipping_state'      => '',
+      'shipping_country'    => '',
+      'is_vat_exempt'       => false,
+      'calculated_shipping' => false
+  );
+  foreach($data as $k => $v ){
+    $user->{$k} = get_user_meta($user->ID, $k);
+    if(!isset($user->{$k})){
+      $user->{$k} = $v;
+    }
+  }
+  return $user;
 
+}
 function edb_login( $data ) {
     $signon = wp_signon( array( 'user_login' => $data['username'], 'user_password' => $data['password'], 'remember_me' => true ) );
     if( is_wp_error( $signon ) ) {
@@ -93,7 +118,7 @@ function edb_login( $data ) {
       // $data = get_user_meta( $signon->ID );
       // $signon->meta=$data;
       wp_set_auth_cookie( $signon->ID, true );
-      return  $signon;
+      return edb_user($signon);
     }
 }
 
