@@ -93,7 +93,7 @@ function edb_login( $data ) {
       $data = get_user_meta( $signon->ID );
       $signon->meta=$data;
       wp_set_auth_cookie( $signon->ID, true );
-      return  $signon;
+      return  new WC_Customer();
     }
 }
 
