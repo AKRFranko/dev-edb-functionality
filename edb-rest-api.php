@@ -102,7 +102,7 @@ function edb_user( $user ){
       'calculated_shipping' => false
   );
   foreach($data as $k => $v ){
-    $user->{$k} = get_user_meta($user->ID, $k);
+    $user->{$k} = get_user_meta($user->ID, $k, true );
     if(!isset($user->{$k})){
       $user->{$k} = $v;
     }
