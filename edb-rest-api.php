@@ -86,23 +86,17 @@ function edb_get_auth_user( $data ) {
 
 
 function edb_login( $data ) {
-  $signon = wp_signon( 
-    array( 
-      'user_login' => $data['username'] , 
-      'user_password' => $data['password'], 
-      'remember_me' => true ) );
-      if ( is_wp_error( $signon ) ) {
-          return $signon;
-      } else {
-          wp_set_auth_cookie( $signon->ID, true );
-      }
-  if (is_wp_error($signon)){
-    return $signon;
-  }
-  $data = get_user_meta( $signon->ID );
-  $signon->meta=$data;
-  return  $signon;
+    $signon = wp_signon( array( 'user_login' => $data['username'], 'user_password' => $data['password'], 'remember_me' => true ) );
+    if( is_wp_error( $signon ) ) {
+      return $signon;
+    }else{
+      $data = get_user_meta( $signon->ID );
+      $signon->meta=$data;
+      wp_set_auth_cookie( $signon->ID, true );
+      return  $signon;
+    }
 }
+
 
 function edb_logout( ) {
   return  wp_logout() ;
