@@ -90,10 +90,10 @@ function edb_login( $data ) {
     if( is_wp_error( $signon ) ) {
       return $signon;
     }else{
-      $data = get_user_meta( $signon->ID );
-      $signon->meta=$data;
+      // $data = get_user_meta( $signon->ID );
+      // $signon->meta=$data;
       wp_set_auth_cookie( $signon->ID, true );
-      return  new WC_Customer();
+      return  $signon;
     }
 }
 
