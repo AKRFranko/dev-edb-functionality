@@ -389,8 +389,8 @@ add_action( 'rest_api_init', function() {
     $scheme = $_SERVER['REQUEST_SCHEME'];
     // $name = $_SERVER['SERVER_ADDR'] == '45.56.104.172' ? 'edb.akr.club' : 'installatex.ca';
     $aheaders = apache_request_headers();
-    $name = $aheaders['host'];
-    header("Access-Control-Allow-Origin: $scheme://$name");
+    $name = $aheaders['origin'];
+    header("Access-Control-Allow-Origin: $name");
     // header_remove('Access-Control-Allow-Origin');
     // var_dump($_SERVER);
     return $value;
