@@ -40,9 +40,7 @@ function edb_return_custom_sale_price(  $price,$product) {
   }else{
     $base_price = rwmb_meta('edb_base_price', null, $product->id);  
   }
-  
   return is_null($price) ? null : floatval(max($price,$base_price)) + $price;
-
 }
 
 
