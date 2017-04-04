@@ -291,6 +291,12 @@ function edb_register_meta_boxes( $meta_boxes ) {
                 'id'    => $prefix . 'group_ids',
                 'type'  => 'text',
                 'class' => 'bucket-groupids'
+            ),
+            array(
+                'name'  => __( 'Base Price', 'edb' ),
+                'id'    => $prefix . 'base_price',
+                'type'  => 'number',
+                'class' => 'bucket-baseprice'
             )
         )
     );
