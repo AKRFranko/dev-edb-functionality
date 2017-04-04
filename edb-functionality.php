@@ -19,8 +19,10 @@ function edb_woocommerce_support() {
     
 
 }
-// add_filter('woocommerce_get_price', 'edb_return_custom_price', 2); 
-// function edb_return_custom_price($price, $product) {    
+add_filter('woocommerce_get_price', 'edb_return_custom_price', 2); 
+function edb_return_custom_price( $product, $price) {    
+  return $price;
+}
 //     // Grab the product id
 //     $post_id = $product->id; 
 //     // Get user's ip location and correspond it to the custom field key
