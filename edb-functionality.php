@@ -32,7 +32,7 @@ function edb_return_custom_price(  $price,$product) {
   
 }
 add_filter('woocommerce_get_regular_price', 'edb_return_custom_regular_price', 10,2); 
-function edb_return_custom_price(  $price,$product) {
+function edb_return_custom_regular_price(  $price,$product) {
   $parent_id = $product->parent_id;
   if(!empty($parent_id)){
     $base_price = rwmb_meta('edb_base_price', null, $parent_id);  
