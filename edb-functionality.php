@@ -16,7 +16,18 @@
 function edb_woocommerce_support() {
     add_theme_support( 'woocommerce' );
     add_theme_support( 'post-thumbnails' );
+    
+
 }
+add_filter('woocommerce_get_price', 'edb_return_custom_price', 2); 
+function edb_return_custom_price($price, $product) {    
+    // Grab the product id
+    $post_id = $product->id; 
+    // Get user's ip location and correspond it to the custom field key
+    $base_price = rwmb_meta('edb_base_price', null, $post_id);
+    return is_null($price) ? $base_price : $price;
+}   
+
 
 add_action( 'after_setup_theme', 'edb_woocommerce_support' );
 
@@ -44,6 +55,8 @@ function edb_remove_menus(){
 add_action( 'admin_menu', 'edb_remove_menus' );
 
 remove_filter('the_content', 'wpautop');
+
+
 
 include 'edb-post-types.php';
 include 'edb-mb-rest-api.php';
