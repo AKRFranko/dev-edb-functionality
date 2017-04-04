@@ -22,7 +22,7 @@ function edb_woocommerce_support() {
 add_filter('woocommerce_get_price', 'edb_return_custom_price', 10,2); 
 function edb_return_custom_price(  $price,$product) {
   $base_price = rwmb_meta('edb_base_price', null, $product->id);
-  return !is_null($base_price) ? floatval($base_price) : $price;
+  return floatval($base_price);//!is_null($base_price) ? floatval($base_price) : $price;
 }
 //     // Grab the product id
 //     $post_id = $product->id; 
