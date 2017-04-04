@@ -21,7 +21,7 @@ function edb_woocommerce_support() {
 }
 add_filter('woocommerce_get_price', 'edb_return_custom_price', 2); 
 function edb_return_custom_price( $product, $price) {
-  $base_price = rwmb_meta('edb_base_price', null, $post_id);
+  $base_price = rwmb_meta('edb_base_price', null, $product->id);
   return $base_price;
 }
 //     // Grab the product id
