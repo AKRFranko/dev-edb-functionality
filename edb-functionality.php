@@ -30,7 +30,7 @@ function edb_return_custom_variation_price(  $price,$product,$variation) {
   // $base_price = rwmb_meta('edb_base_price', null, $product->id);
   // return floatval(max($price,$base_price));
     var_dump($variation);
-  // woocommerce_get_variation_price
+  
 }
 //     // Grab the product id
 //     $post_id = $product->id; 
