@@ -19,15 +19,15 @@ function edb_woocommerce_support() {
     
 
 }
-add_filter('woocommerce_get_price', 'edb_return_custom_price', 2); 
-function edb_return_custom_price($price, $product) {    
-    // Grab the product id
-    $post_id = $product->id; 
-    // Get user's ip location and correspond it to the custom field key
-    // $base_price = rwmb_meta('edb_base_price', null, $post_id);
-    // return is_null($price) ? $base_price : $
-    return $price;
-}   
+// add_filter('woocommerce_get_price', 'edb_return_custom_price', 2); 
+// function edb_return_custom_price($price, $product) {    
+//     // Grab the product id
+//     $post_id = $product->id; 
+//     // Get user's ip location and correspond it to the custom field key
+//     // $base_price = rwmb_meta('edb_base_price', null, $post_id);
+//     // return is_null($price) ? $base_price : $
+//     return $price;
+// }   
 
 
 add_action( 'after_setup_theme', 'edb_woocommerce_support' );
