@@ -285,6 +285,12 @@ function edb_register_meta_boxes( $meta_boxes ) {
                 'id'    => $prefix . 'bucket_slug',
                 'type'  => 'text',
                 'class' => 'bucket-slug'
+            ),
+            array(
+                'name'  => __( 'Group Ids', 'edb' ),
+                'id'    => $prefix . 'group_ids',
+                'type'  => 'text',
+                'class' => 'bucket-groupids'
             )
         )
     );
