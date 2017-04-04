@@ -25,7 +25,7 @@ function edb_return_custom_price(  $price,$product) {
   return floatval(max($price,$base_price));
   
 }
-add_filter('woocommerce_get_variation_price', 'edb_return_custom_price', 10,3); 
+add_filter('woocommerce_get_variation_price', 'edb_return_custom_variation_price', 10,3); 
 function edb_return_custom_variation_price(  $price,$product,$variation) {
   // $base_price = rwmb_meta('edb_base_price', null, $product->id);
   // return floatval(max($price,$base_price));
