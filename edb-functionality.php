@@ -24,8 +24,9 @@ function edb_return_custom_price($price, $product) {
     // Grab the product id
     $post_id = $product->id; 
     // Get user's ip location and correspond it to the custom field key
-    $base_price = rwmb_meta('edb_base_price', null, $post_id);
-    return is_null($price) ? $base_price : $price;
+    // $base_price = rwmb_meta('edb_base_price', null, $post_id);
+    // return is_null($price) ? $base_price : $
+    return $price;
 }   
 
 
