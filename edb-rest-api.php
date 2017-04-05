@@ -390,8 +390,8 @@ add_action( 'rest_api_init', function() {
     // $name = $_SERVER['SERVER_ADDR'] == '45.56.104.172' ? 'edb.akr.club' : 'installatex.ca';
     $aheaders = apache_request_headers();
     $name = $aheaders['Origin'];
-    header("Access-Control-Allow-Origin: $name");
-    // header_remove('Access-Control-Allow-Origin');
+    // header("Access-Control-Allow-Origin: $name");
+    header_remove('Access-Control-Allow-Origin');
     // var_dump($_SERVER);
     return $value;
   });
