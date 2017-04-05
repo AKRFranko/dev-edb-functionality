@@ -29,6 +29,15 @@ function edb_return_custom_price(  $price,$product) {
   }else{
     $base_price = rwmb_meta('edb_base_price', null, $product->id);  
   }
+  if($product->type == 'grouped'){
+    $gids = explode(',',trim(rwmb_meta('edb_group_ids', null, $product->id)));
+    $prices = array();
+    foreach($gids as $gid){
+      $prod = wc_get_product( $gid);
+      $prices[] = $prod->price;
+    }
+    return floatval( array_sum( $prices ) );
+  }
 
   return floatval(max($price,$base_price)) + $price;
   
