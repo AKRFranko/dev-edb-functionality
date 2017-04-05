@@ -30,7 +30,7 @@ function edb_return_custom_price(  $price,$product) {
     $base_price = rwmb_meta('edb_base_price', null, $product->id);  
   }
   
-    $gids = explode(',',trim(rwmb_meta('edb_group_ids', null, $product->id)));
+    $gids = rwmb_meta('edb_group_ids', null, $product->id);
     var_dump($gids);
     // if(!empty($gids)){
     //   $prices = array();
