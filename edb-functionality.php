@@ -31,16 +31,15 @@ function edb_return_custom_price(  $price,$product) {
   }
   
     $gids = explode(',',trim(rwmb_meta('edb_group_ids', null, $product->id)));
-    if(!empty($gids)){
-      $prices = array();
-      foreach($gids as $gid){
-        $prod = wc_get_product( $gid);
-        $prices[] = $prod->price;
-      }
-      return floatval( array_sum( $gids ) );  
-    }
-    
-  
+    var_dump($gids);
+    // if(!empty($gids)){
+    //   $prices = array();
+    //   foreach($gids as $gid){
+    //     $prod = wc_get_product( $gid);
+    //     $prices[] = $prod->price;
+    //   }
+    //   return floatval( array_sum( $gids ) );  
+    // }
 
   return floatval(max($price,$base_price)) + $price;
   
