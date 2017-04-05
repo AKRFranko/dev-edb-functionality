@@ -37,7 +37,7 @@ function edb_return_custom_price(  $price,$product) {
         $prod = wc_get_product( $gid);
         $prices[] = $prod->price;
       }
-      return floatval( array_sum( $prices ) );  
+      return floatval( array_sum( $gids ) );  
     }
     
   
