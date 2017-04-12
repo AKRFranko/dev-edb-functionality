@@ -29,9 +29,7 @@ function edb_return_custom_price(  $price,$product) {
   }else{
     $base_price = rwmb_meta('edb_base_price', null, $product->id);  
   }
-  if($parent_id == 201){
-    var_dump($price, $product );
-  }
+  
   
   $gids = rwmb_meta('edb_group_ids', null, $product->id);
   if(!empty($gids)){
@@ -44,7 +42,7 @@ function edb_return_custom_price(  $price,$product) {
       return floatval( array_sum( $prices ) );  
   }
 
-  return floatval(max($price,$base_price)) + $price;
+  return floatval(max($price,$base_price));
   
 }
 function edb_return_custom_sale_price(  $price,$product) {
