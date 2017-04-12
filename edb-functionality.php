@@ -30,7 +30,7 @@ function edb_return_custom_price(  $price,$product) {
     $base_price = rwmb_meta('edb_base_price', null, $product->id);  
   }
   if($parent_id == 201){
-    var_dump($price, $product 1);
+    var_dump($price, $product );
   }
   
   $gids = rwmb_meta('edb_group_ids', null, $product->id);
