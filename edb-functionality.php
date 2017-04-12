@@ -41,8 +41,8 @@ function edb_return_custom_price(  $price,$product) {
       }
       return floatval( array_sum( $prices ) );  
   }
-
-  return floatval(max($price,$base_price));
+  
+  return $price;//floatval(max($price,$base_price)) + $price;
   
 }
 function edb_return_custom_sale_price(  $price,$product) {
