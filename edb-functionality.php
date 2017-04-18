@@ -20,16 +20,6 @@ function edb_woocommerce_support() {
 
 }
 
-add_action('woocommerce_calculate_totals','edb_woocommerce_calculate_totals');
-function edb_woocommerce_calculate_totals($cart) {
-  foreach( $cart->get_cart() as $cart_item_key => $values ){
-    var_dump($values);
-  }
-     // get some hints from the code above and do something like foreach ( $cart->get_cart() as $cart_item_key => $values ) { }
-     // do your math, then set $cart->cart_contents_total
-}
-
-
 
 
 add_filter('woocommerce_get_price', 'edb_return_custom_price', 10,2); 
