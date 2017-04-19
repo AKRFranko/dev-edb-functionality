@@ -101,7 +101,19 @@ function edb_logout( ) {
 }
 
 
-
+function edb_reset(){
+  wc_update_product_stock( 199, 10, 'set');
+  wc_update_product_stock( 234, 5, 'set');
+  wc_update_product_stock( 233, 2, 'set');
+  wc_update_product_stock( 232, 3, 'set');
+  wc_update_product_stock( 231, 2, 'set');
+  wc_update_product_stock( 463, 4, 'set');
+  wc_update_product_stock( 472, 0, 'set');
+  wc_update_product_stock( 471, 2, 'set');
+  wc_update_product_stock( 470, 4, 'set');
+  wc_update_product_stock( 469, 1, 'set');
+  return true;
+}
 
 
 function edb_register($data){
@@ -370,6 +382,11 @@ add_action( 'rest_api_init', function() {
   register_rest_route( 'wp/v2', '/register', array(
     'methods' => 'POST',
     'callback' => 'edb_register',
+  ));
+  
+  register_rest_route( 'wp/v2', '/reset', array(
+    'methods' => 'POST',
+    'callback' => 'edb_reset',
   ));
   
   // register_rest_route( 'wp/v2', '/catalog', array(
