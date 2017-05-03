@@ -20,7 +20,11 @@ function edb_woocommerce_support() {
 
 }
 
+function edb_woocommerce_order_get_total_discount( $discount, $order ){
+  var_dump($order);  
+}
 
+add_filter('woocommerce_order_get_total_discount','edb_woocommerce_order_get_total_discount', 90, 2 );
 
 add_filter('woocommerce_get_price', 'edb_return_custom_price', 10,2); 
 add_filter('woocommerce_get_regular_price', 'edb_return_custom_price', 10,2); 

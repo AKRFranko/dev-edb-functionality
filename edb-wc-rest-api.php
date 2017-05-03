@@ -7,6 +7,8 @@ function edb_woocommerce_rest_insert_product($post, $request){
   }
 
 }
+
+
 function expand_metabox_properties( $product ){
   $meta_boxes = RWMB_Core::get_meta_boxes();
   $product->meta_box = array();
@@ -62,6 +64,7 @@ function edb_woocommerce_rest_check_permissions( $permission, $context, $object_
   // var_dump($_SERVER);
   return true;
 }
+
 
 
 add_filter( 'woocommerce_rest_prepare_product', 'edb_woocommerce_rest_prepare_product', 90, 2 );
