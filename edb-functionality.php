@@ -25,7 +25,7 @@ if ( is_array( $data ) )
  $output = "<script>console.log( 'Debug Objects: " . implode( ',', $data) . "' );</script>";
  else
  $output = "<script>console.log( 'Debug Objects: " . $data . "' );</script>";
-echo $output;
+  echo $output;
 }
 
 function edb_woocommerce_order_get_total_discount( $discount, $order ){
