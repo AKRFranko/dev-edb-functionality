@@ -20,8 +20,16 @@ function edb_woocommerce_support() {
 
 }
 
+function debug_to_console( $data ) {
+if ( is_array( $data ) )
+ $output = "<script>console.log( 'Debug Objects: " . implode( ',', $data) . "' );</script>";
+ else
+ $output = "<script>console.log( 'Debug Objects: " . $data . "' );</script>";
+echo $output;
+}
+
 function edb_woocommerce_order_get_total_discount( $discount, $order ){
-  var_dump($order);  
+  debug_to_console($order);  
 }
 
 add_filter('woocommerce_order_get_total_discount','edb_woocommerce_order_get_total_discount', 90, 2 );
