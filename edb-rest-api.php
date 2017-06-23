@@ -363,12 +363,6 @@ add_action( 'rest_api_init', 'edb_rest_insert_thumbnail_url' );
 add_action( 'rest_api_init', 'edb_rest_register_fields' );
 // $_SERVER['PHP_AUTH_USER']="ck_171751666f42c473b1746edc1eaa0a4392ac2e4a";
 // $_SERVER['PHP_AUTH_PW']="cs_dd0dfe3cfd245660bf27f5fc25d8f98dd3dda14c";
-add_filter( 'rest_pre_dispatch', 'prefix_show_request_headers', 10, 3 );
-
-function prefix_show_request_headers( $result, $server, $request ) {
-    $result = $request->get_headers();
-    return $result;
-}
 
 add_action( 'rest_api_init', function() {
   
@@ -413,6 +407,7 @@ add_action( 'rest_api_init', function() {
     header('Access-Control-Allow-Methods: HEAD, OPTIONS, GET, PUT, POST, PATCH, DELETE');
     $aheaders = apache_request_headers();
     $name = $aheaders['Origin'];
+    var_dump($aheaders);
     if($name == 'http://edb.akr.club' || $name == 'http://edb.akr.club:3000'){
       header("Access-Control-Allow-Origin: $name");  
     }else{
