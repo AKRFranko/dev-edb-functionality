@@ -407,7 +407,7 @@ add_action( 'rest_api_init', function() {
     header('Access-Control-Allow-Methods: HEAD, OPTIONS, GET, PUT, POST, PATCH, DELETE');
     $aheaders = apache_request_headers();
     $name = $aheaders['Origin'];
-    var_dump($aheaders);
+    
     if($name == 'http://edb.akr.club' || $name == 'http://edb.akr.club:3000'){
       header("Access-Control-Allow-Origin: $name");  
     }else{
