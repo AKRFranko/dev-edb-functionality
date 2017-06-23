@@ -1,4 +1,6 @@
 <?php
+/* Require authentication for REST API usage */ 
+add_filter('rest_authentication_errors', function ($result) { if (!empty($result)) { return $result; } if (!is_user_logged_in() && $_SERVER['REQUEST_URI'] !== "/wp-json/jwt-auth/v1/token" && $_SERVER['REQUEST_URI'] !== "/wp-json/jwt-auth/v1/token/validate") { return new WP_Error('rest_not_logged_in', 'You are not currently logged in.', array('status' => 401)); } return $result; });
 
 function edb_rest_get_thumbnail_url($post){
     if(has_post_thumbnail($post['id'])){

@@ -123,12 +123,6 @@ add_action( 'admin_menu', 'edb_remove_menus' );
 remove_filter('the_content', 'wpautop');
 
 
-add_filter( 'rest_pre_dispatch', 'prefix_show_request_headers', 10, 3 );
-
-function prefix_show_request_headers( $result, $server, $request ) {
-    $result = $request->get_headers();
-    return $result;
-}
 
 include 'edb-post-types.php';
 include 'edb-mb-rest-api.php';
