@@ -12,7 +12,7 @@ function edb_rest_get_thumbnail_url($post){
 
 function edb_rest_get_thumbnail_colors($post){
     if(has_post_thumbnail($post['id'])){
-        $colors = get_post_meta($post['id'],color_palette_hex);
+        $colors = get_post_meta($post['id'],'color_palette_hex');
         return $colors;
     } else {
         return false;
