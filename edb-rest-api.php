@@ -14,14 +14,9 @@ function edb_rest_get_thumbnail_url($post){
 
 
 function edb_rest_get_thumbnail_colors($post){
-    var_dump(get_post_meta($post['id'],'color_palette_hex'));
-    die();
-    if(has_post_thumbnail($post['id'])){
-        $colors = get_post_meta($post['id'],'color_palette_hex');
-        return $colors;
-    } else {
-        return array();
-    }
+    
+   $colors = get_post_meta($post['id'],'color_palette_hex');
+   return $colors;
 }
 
 
