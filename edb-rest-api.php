@@ -16,7 +16,7 @@ function edb_rest_get_thumbnail_url($post){
 function edb_rest_get_thumbnail_colors($post){
     
   // $colors = get_post_meta(get_post_thumbnail_id( $post['id'] ),'color_palette_hex');
-   return 'YES!!' //$colors;
+   return 'YES!!'; //$colors;
 }
 
 
