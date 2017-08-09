@@ -15,8 +15,6 @@ function edb_rest_get_thumbnail_url($post){
 
 function edb_rest_get_thumbnail_colors($post){
     
-    var_dump(get_post_meta(get_post_thumbnail_id( $post['id'] ),'color_palette_hex'));
-    die();
     if(has_post_thumbnail($post['id'])){
        $colors = get_post_meta(get_post_thumbnail_id( $post['id'] ),'color_palette_hex');
        return $colors;
@@ -165,7 +163,7 @@ function edb_rest_insert_thumbnail_url() {
      $cb = array( 'get_callback'    => 'edb_rest_get_thumbnail_url', 'update_callback' => null, 'schema'=> null );
      foreach($postTypes as $type){
        register_rest_field( $type ,'featured_image',  $cb );
-       register_rest_field( $type ,'featured_colors', 'edb_rest_get_thumbnail_colors' );
+       register_rest_field( $type ,'featured_colors', array( 'get_callback'    => 'edb_rest_get_thumbnail_colors', 'update_callback' => null, 'schema'=> null ) );
      }
 }
 
