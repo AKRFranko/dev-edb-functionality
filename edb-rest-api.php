@@ -1,5 +1,14 @@
 <?php
 
+function var_error_log( $object=null ){
+    ob_start();                    // start buffer capture
+    var_dump( $object );           // dump the values
+    $contents = ob_get_contents(); // put the buffer into a variable
+    ob_end_clean();                // end capture
+    error_log( $contents );        // log contents of the result of var_dump( $object )
+}
+ 
+
 function edb_rest_get_thumbnail_url($post){
     if(has_post_thumbnail($post['id'])){
         $imgArray = wp_get_attachment_image_src( get_post_thumbnail_id( $post['id'] ), 'full' ); // replace 'full' with 'thumbnail' to get a thumbnail
@@ -10,7 +19,9 @@ function edb_rest_get_thumbnail_url($post){
     }
 }
 
+
 function edb_rest_get_thumbnail_colors($post){
+    var_error_log(get_post_meta($post['id'],'color_palette_hex'));
     if(has_post_thumbnail($post['id'])){
         $colors = get_post_meta($post['id'],'color_palette_hex');
         return $colors;
