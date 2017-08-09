@@ -10,6 +10,16 @@ function edb_rest_get_thumbnail_url($post){
     }
 }
 
+function edb_rest_get_thumbnail_colors($post){
+    if(has_post_thumbnail($post['id'])){
+        $colors = get_post_meta($post['id'],color_palette_hex);
+        return $colors;
+    } else {
+        return false;
+    }
+}
+
+
 function edb_rest_get_designer_meta($user){
   if($user){
     $edb_user_is_designer = get_the_author_meta( 'edb_user_is_designer', $user['id'], true );
@@ -148,6 +158,7 @@ function edb_rest_insert_thumbnail_url() {
      $cb = array( 'get_callback'    => 'edb_rest_get_thumbnail_url', 'update_callback' => null, 'schema'=> null );
      foreach($postTypes as $type){
        register_rest_field( $type ,'featured_image',  $cb );
+       register_rest_field( $type ,'featured_colors', 'edb_rest_get_thumnail_colors' );
      }
 }
 function edb_populate_jwt( $data, $user ){
