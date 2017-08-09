@@ -157,7 +157,8 @@ function edb_rest_insert_thumbnail_url() {
      );
      $cb = array( 'get_callback'    => 'edb_rest_get_thumbnail_url', 'update_callback' => null, 'schema'=> null );
      foreach($postTypes as $type){
-       register_rest_field( $type ,'featured_image',  $cb );
+       //register_rest_field( $type ,'featured_image',  $cb );
+       
        register_rest_field( $type ,'featured_colors', 'edb_rest_get_thumbnail_colors' );
      }
 }
