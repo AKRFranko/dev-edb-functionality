@@ -426,8 +426,7 @@ add_action( 'rest_api_init', function() {
     header('Access-Control-Allow-Headers: Authorization, X-Requested-With, Content-Type, Content-Disposition');
     header('Access-Control-Allow-Methods: HEAD, OPTIONS, GET, PUT, POST, PATCH, DELETE');
     $aheaders = apache_request_headers();
-    $name = $aheaders['Origin'];
-    
+    $name = @$aheaders['Origin'];
     if($name == 'http://edb.akr.club' || $name == 'http://edb.akr.club:3000'){
       header("Access-Control-Allow-Origin: $name");  
     }else{
