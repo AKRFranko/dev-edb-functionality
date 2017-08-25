@@ -67,6 +67,7 @@ function edb_custom_post_type(  $capPlural, $capSingular, $plural, $singular){
 function edb_register_materials_post_type(){
   $args = edb_custom_post_type( 'Materials', 'Material', 'materials', 'material');
   register_post_type('edb_materials', $args);
+  
 }
 function edb_register_slides_post_type(){
   $args = edb_custom_post_type( 'Slides', 'Slide', 'slides', 'slide');
@@ -75,6 +76,7 @@ function edb_register_slides_post_type(){
 function edb_register_features_post_type(){
   $args = edb_custom_post_type( 'Features', 'Feature', 'features', 'feature');
   register_post_type('edb_features', $args);
+  add_post_type_support( 'edb_features', 'wps_subtitle' );
 }
 function edb_register_lookbooks_post_type(){
   $args = edb_custom_post_type( 'Lookbooks', 'Lookbook', 'lookbooks', 'lookbook');
@@ -130,6 +132,7 @@ function edb_register_meta_boxes( $meta_boxes ) {
         'context'    => 'normal',
         'priority'   => 'high',
         'fields' => array(
+            
             array(
                 'name'  => __( 'URL', 'edb' ),
                 'id'    => $prefix . 'feature_url',

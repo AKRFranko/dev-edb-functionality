@@ -64,6 +64,19 @@ function edb_rest_get_customer_meta($user){
   }
 };
 
+
+function edb_rest_get_subtitle($post){
+  if($post){
+    
+    return get_post_meta($post['id'], 'wps_subtitle', true );
+  }
+};
+function edb_rest_update_subtitle($data, $post){
+  if($post){
+    return update_post_meta($post['id'], 'wps_subtitle', $data );
+  }
+};
+
 function edb_rest_update_customer_meta( $meta , $user){
   foreach( $meta as $k => $v){
     update_user_meta($user->ID, $k, $v );
@@ -84,6 +97,14 @@ function edb_rest_register_fields(){
     array(
       'get_callback'    => 'edb_rest_get_customer_meta',
       'update_callback' => 'edb_rest_update_customer_meta',
+      'schema'          => null,
+      )
+  );
+  register_rest_field( 'edb_features',
+   'subtitle',  //key-name in json response
+    array(
+      'get_callback'    => 'edb_rest_get_subtitle',
+      'update_callback' => 'edb_rest_update_subtitle',
       'schema'          => null,
       )
   );
