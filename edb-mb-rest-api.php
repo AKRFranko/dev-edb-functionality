@@ -54,7 +54,7 @@ class MB_Rest_API {
           continue;
         }
         $value = rwmb_get_value( $field['id'] );
-        var_dump($value);
+        
         if(is_array($value)){
           $nvalue = array();
           foreach($value as $k => $v ){
@@ -68,7 +68,7 @@ class MB_Rest_API {
         
       }
     }
-    var_dump( get_post_meta($object['id'], 'edb_wireframe'));
+    // var_dump( get_post_meta($object['id'], 'edb_wireframe'));
     
     return $output;
   }
@@ -91,7 +91,7 @@ class MB_Rest_API {
         delete_post_meta($object->ID, $field_name);
         
         foreach ($value as $v) {
-          // var_dump($v);
+          
           add_post_meta($object->ID, $field_name, $v );
         }
       }else{
@@ -133,7 +133,7 @@ class MB_Rest_API {
         $output[ $field['id'] ] = get_term_meta( $object['id'], $field['id'], $single );
       }
     }
-    
+    die();
     return $output;
   }
   
