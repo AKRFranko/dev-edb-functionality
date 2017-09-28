@@ -70,7 +70,7 @@ class MB_Rest_API {
     }
     // $ouput['edb_wireframe'] = 
     // var_dump(rwmb_meta( 'edb_wireframe', null, $object['id'] ));
-    
+    var_dump('FTW');
     return $output;
   }
   
@@ -101,7 +101,7 @@ class MB_Rest_API {
       
     }
     
-    var_dump('FTW');
+    
     return $output;
   }
 
