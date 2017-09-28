@@ -40,6 +40,7 @@ class MB_Rest_API {
    * @return array
    */
   public function get_post_meta_rest_api( $object ) {
+    global $post;
     $output     = array();
     $meta_boxes = RWMB_Core::get_meta_boxes();
     
