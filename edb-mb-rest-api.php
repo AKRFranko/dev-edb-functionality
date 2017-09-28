@@ -66,7 +66,7 @@ class MB_Rest_API {
         
       }
     }
-    var_dump($object['id']);
+    var_dump($object['id'], get_post_meta($object['id'], 'edb_wireframe'));
     
     return $output;
   }
