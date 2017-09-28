@@ -53,7 +53,7 @@ class MB_Rest_API {
         if ( empty( $field['id'] ) ) {
           continue;
         }
-        $value = rwmb_get_value( $field['id'] );
+        $value = rwmb_get_value( $field['id'], null, $object['id'] );
         if(is_array($value)){
           $nvalue = array();
           foreach($value as $k => $v ){
