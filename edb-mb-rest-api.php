@@ -21,7 +21,7 @@ class MB_Rest_API {
    * Register new field 'meta_box' for all meta box's fields.
    */
   public function init() {
-    return;
+    
     register_rest_field( $this->get_types(), 'meta_box', array(
       'get_callback' => array( $this, 'get_post_meta_rest_api' ),
       'update_callback' => array( $this, 'update_post_meta_rest_api' )
