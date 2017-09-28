@@ -69,8 +69,8 @@ class MB_Rest_API {
       }
     }
     // $ouput['edb_wireframe'] = 
-    // var_dump(rwmb_meta( 'edb_wireframe', null, $object['id'] ));
-    var_dump('FTW');
+    // var_dump();
+    var_dump(rwmb_meta( 'edb_wireframe', null, $object['id'] ));
     return $output;
   }
   
@@ -134,7 +134,7 @@ class MB_Rest_API {
         $output[ $field['id'] ] = get_term_meta( $object['id'], $field['id'], $single );
       }
     }
-    var_dump('WTF');
+    
     return $output;
   }
   
