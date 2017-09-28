@@ -21,7 +21,7 @@ class MB_Rest_API {
    * Register new field 'meta_box' for all meta box's fields.
    */
   public function init() {
-    
+    return;
     register_rest_field( $this->get_types(), 'meta_box', array(
       'get_callback' => array( $this, 'get_post_meta_rest_api' ),
       'update_callback' => array( $this, 'update_post_meta_rest_api' )
@@ -42,6 +42,7 @@ class MB_Rest_API {
   public function get_post_meta_rest_api( $object ) {
     $output     = array();
     $meta_boxes = RWMB_Core::get_meta_boxes();
+    
     foreach ( $meta_boxes as $meta_box ) {
       $meta_box = RW_Meta_Box::normalize( $meta_box );
       if ( ! in_array( $object['type'], $meta_box['post_types'] ) ) {
@@ -65,7 +66,7 @@ class MB_Rest_API {
         
       }
     }
-
+    
     return $output;
   }
   
