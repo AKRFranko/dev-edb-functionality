@@ -66,6 +66,7 @@ class MB_Rest_API {
         
       }
     }
+    var_dump($object);
     
     return $output;
   }
@@ -82,7 +83,7 @@ class MB_Rest_API {
     
     // $post_data = json_decode( $json, true );
     
-    var_dump($post_data);
+    
     foreach( $post_data as $field_name => $value ){
       if(is_array($value)){
         delete_post_meta($object->ID, $field_name);
@@ -130,7 +131,7 @@ class MB_Rest_API {
         $output[ $field['id'] ] = get_term_meta( $object['id'], $field['id'], $single );
       }
     }
-
+    
     return $output;
   }
   
