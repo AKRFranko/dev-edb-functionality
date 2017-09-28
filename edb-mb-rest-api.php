@@ -101,7 +101,7 @@ class MB_Rest_API {
       
     }
     
-    
+    var_dump('FTW');
     return $output;
   }
 
