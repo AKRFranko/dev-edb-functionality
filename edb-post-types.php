@@ -72,7 +72,7 @@ function edb_register_materials_post_type(){
 function edb_register_slides_post_type(){
   $args = edb_custom_post_type( 'Slides', 'Slide', 'slides', 'slide');
   register_post_type('edb_slides', $args);
-  // add_post_type_support( 'edb_features', 'wps_subtitle' );
+  add_post_type_support( 'edb_slides', 'wps_subtitle' );
 }
 function edb_register_features_post_type(){
   $args = edb_custom_post_type( 'Features', 'Feature', 'features', 'feature');
@@ -105,9 +105,9 @@ function edb_register_meta_boxes( $meta_boxes ) {
     $prefix = 'edb_';
     // 1st meta box
     $meta_boxes[] = array(
-        'id'         => 'EDB',
+        'id'         => 'EDBSlides',
         'title'      => __( 'EDB', 'edb' ),
-        'post_types' =>  'edb_slides',
+        'post_types' =>  array('edb_slides'),
         'context'    => 'normal',
         'priority'   => 'high',
         'fields' => array(
@@ -127,9 +127,9 @@ function edb_register_meta_boxes( $meta_boxes ) {
     );
     
     $meta_boxes[] = array(
-        'id'         => 'EDB',
+        'id'         => 'EDBFeatures',
         'title'      => __( 'EDB', 'edb' ),
-        'post_types' =>  'edb_features',
+        'post_types' =>  array('edb_features'),
         'context'    => 'normal',
         'priority'   => 'high',
         'fields' => array(
@@ -157,9 +157,9 @@ function edb_register_meta_boxes( $meta_boxes ) {
     );
     
     $meta_boxes[] = array(
-        'id'         => 'EDB',
+        'id'         => 'EDBMaterials',
         'title'      => __( 'EDB', 'edb' ),
-        'post_types' =>  'edb_materials',
+        'post_types' =>  array('edb_materials'),
         'context'    => 'normal',
         'priority'   => 'high',
         'fields' => array(
@@ -179,9 +179,9 @@ function edb_register_meta_boxes( $meta_boxes ) {
     );
     
     $meta_boxes[] = array(
-        'id'         => 'faq',
+        'id'         => 'EDBFAQ',
         'title'      => __( 'FAQ', 'edb' ),
-        'post_types' => 'edb_faqs',
+        'post_types' => array('edb_faqs'),
         'context'    => 'normal',
         'priority'   => 'high',
         'fields' => array(
@@ -219,9 +219,9 @@ function edb_register_meta_boxes( $meta_boxes ) {
     );
     
     $meta_boxes[] = array(
-        'id'         => 'inspiration',
+        'id'         => 'EDBinspiration',
         'title'      => __( 'Inspiration', 'edb' ),
-        'post_types' =>  'edb_inspirations',
+        'post_types' =>  array('edb_inspirations'),
         'context'    => 'normal',
         'priority'   => 'high',
         'fields' => array(
@@ -242,7 +242,7 @@ function edb_register_meta_boxes( $meta_boxes ) {
     );
     
     $meta_boxes[] = array(
-        'id'         => 'edb-extra',
+        'id'         => 'EDBProductExtra',
         'title'      => __( 'EDB', 'edb' ),
         'post_types' => array( 'product' ),
         'context'    => 'normal',

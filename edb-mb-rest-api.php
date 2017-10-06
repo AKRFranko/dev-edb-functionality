@@ -99,6 +99,7 @@ class MB_Rest_API {
    * @return array
    */
   public function get_term_meta( $object ) {
+    
     $output = array();
     if ( ! class_exists( 'MB_Term_Meta_Box' ) ) {
       return $output;
@@ -117,7 +118,7 @@ class MB_Rest_API {
         }
         $single      = $field['clone'] || ! $field['multiple'];
         $field_value = get_term_meta( $object['id'], $field['id'], $single );
-
+        
         /*
          * Make sure values of file/image fields are always indexed 0, 1, 2, ...
          * @link https://github.com/malfborger/mb-rest-api/commit/31aa8fa445c188e8a71ebff80027acbcaa0fd268
