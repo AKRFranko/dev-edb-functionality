@@ -72,6 +72,7 @@ function edb_register_materials_post_type(){
 function edb_register_slides_post_type(){
   $args = edb_custom_post_type( 'Slides', 'Slide', 'slides', 'slide');
   register_post_type('edb_slides', $args);
+  // add_post_type_support( 'edb_features', 'wps_subtitle' );
 }
 function edb_register_features_post_type(){
   $args = edb_custom_post_type( 'Features', 'Feature', 'features', 'feature');
