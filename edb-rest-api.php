@@ -101,7 +101,7 @@ function edb_rest_register_fields(){
       )
   );
   register_rest_field( 'edb_features',
-   'subtitle',  //key-name in json response
+  'subtitle',  //key-name in json response
     array(
       'get_callback'    => 'edb_rest_get_subtitle',
       'update_callback' => 'edb_rest_update_subtitle',
