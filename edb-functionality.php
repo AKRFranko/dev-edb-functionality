@@ -135,7 +135,7 @@ include 'edb-post-types.php';
 // $mb_rest_api = new MB_Rest_API;
 // add_action( 'rest_api_init', array( $mb_rest_api, 'init' ) );
 
-// include 'edb-mb-rest-api.php';
+include 'edb-mb-rest-api.php';
 
 include 'edb-rest-api.php';
 include 'edb-wc-rest-api.php';
