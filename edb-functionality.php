@@ -69,7 +69,8 @@ function edb_return_custom_price(  $price,$product) {
   }
   
   $gids = rwmb_meta('edb_group_ids', null, $product->id);
-  debug_to_console($gids);
+  var_dump($gids);
+  die();
   if(!empty($gids)){
     // $gids = explode( ',',trim( $gids) );
       $prices = array();
