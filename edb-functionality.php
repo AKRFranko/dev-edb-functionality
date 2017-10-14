@@ -69,23 +69,27 @@ function edb_return_custom_price(  $price,$product) {
   }
   
   $gids = rwmb_meta('edb_group_ids', null, $product->id);
-  // var_dump($gids);
-  // die();
-  var_dump($gids);
-  return $gids;
-  // if(!empty($gids)){
-  //     $gids = explode( ',',trim( $gids) );
-  //     $prices = array();
-  //     foreach($gids as $gid){
-  //       $prod = wc_get_product( $gid);
-  //       $prices[] = $prod->get_price();
-  //     }
-  //     return floatval( array_sum( $prices ) );  
-  // }else{
-  //   if(empty($base_price)){
-  //     return floatval($price);
-  //   }
-  // }
+  if(is_array($gids)){
+    $split = array();
+    foreach( $gids as $k => $v){
+      $split = array_merge($split, explode( ',',trim( $v) ) );
+    }
+    $gids = $split;
+  }else{
+    $gids = explode( ',',trim( $gids) );
+  }
+  if(!empty($gids)){
+      $prices = array();
+      foreach($gids as $gid){
+        $prod = wc_get_product( $gid);
+        $prices[] = $prod->get_price();
+      }
+      return floatval( array_sum( $prices ) );  
+  }else{
+    if(empty($base_price)){
+      return floatval($price);
+    }
+  }
   
   return floatval(max($price,$base_price)) + $price;
   
