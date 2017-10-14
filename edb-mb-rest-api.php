@@ -18,7 +18,7 @@ class MB_Rest_API {
       'get_callback'    => array( $this, 'get_post_meta' ),
       'update_callback' => array( $this, 'update_post_meta' ),
     ) );
-    register_rest_field( array('products'), 'meta_box', array(
+    register_rest_field( array('product','product_variation'), 'meta_box', array(
       'get_callback'    => array( $this, 'get_post_meta' ),
       'update_callback' => array( $this, 'update_post_meta' ),
     ) );
