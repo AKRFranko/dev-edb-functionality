@@ -47,9 +47,10 @@ class MB_Rest_API {
          * Make sure values of file/image fields are always indexed 0, 1, 2, ...
          * @link https://github.com/malfborger/mb-rest-api/commit/31aa8fa445c188e8a71ebff80027acbcaa0fd268
          */
-        if ( is_array( $field_value ) && in_array( $field['type'], array( 'media', 'file', 'file_upload', 'file_advanced', 'image', 'image_upload', 'image_advanced', 'plupload_image', 'thickbox_image' ), true ) ) {
-          $field_value = array_values( $field_value );
-        }
+        // if ( is_array( $field_value ) && in_array( $field['type'], array( 'media', 'file', 'file_upload', 'file_advanced', 'image', 'image_upload', 'image_advanced', 'plupload_image', 'thickbox_image' ), true ) ) {
+          
+        //   $field_value = array_values( $field_value );
+        // }
         $output[ $field['id'] ] = $field_value;
       }
     }
