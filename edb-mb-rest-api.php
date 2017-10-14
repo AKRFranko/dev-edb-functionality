@@ -54,7 +54,7 @@ class MB_Rest_API {
         $output[ $field['id'] ] = $field_value;
       }
     }
-    var_dump($output);
+    
     return $output;
   }
 
@@ -142,7 +142,7 @@ class MB_Rest_API {
    * @return array
    */
   protected function get_types( $type = 'post' ) {
-    $types = get_post_types( array(), 'objects' );
+    $types = get_post_types( array('products','product_variations'), 'objects' );
     if ( 'taxonomy' === $type ) {
       $types = get_taxonomies( array(), 'objects' );
     }
