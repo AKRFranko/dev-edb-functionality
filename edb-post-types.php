@@ -293,7 +293,7 @@ function edb_register_meta_boxes( $meta_boxes ) {
             array(
                 'name'  => __( 'Group Ids', 'edb' ),
                 'id'    => $prefix . 'group_ids',
-                'type'  => 'text',
+                'type'  => 'text_list',
                 'class' => 'bucket-groupids'
             ),
             array(
