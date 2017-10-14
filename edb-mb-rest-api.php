@@ -18,6 +18,10 @@ class MB_Rest_API {
       'get_callback'    => array( $this, 'get_post_meta' ),
       'update_callback' => array( $this, 'update_post_meta' ),
     ) );
+    register_rest_field( array('products'), 'meta_box', array(
+      'get_callback'    => array( $this, 'get_post_meta' ),
+      'update_callback' => array( $this, 'update_post_meta' ),
+    ) );
     register_rest_field( $this->get_types( 'taxonomy' ), 'meta_box', array(
       'get_callback' => array( $this, 'get_term_meta' ),
     ) );
@@ -142,7 +146,7 @@ class MB_Rest_API {
    * @return array
    */
   protected function get_types( $type = 'post' ) {
-    $types = get_post_types( array('products','product_variations'), 'objects' );
+    $types = get_post_types( array(), 'objects' );
     if ( 'taxonomy' === $type ) {
       $types = get_taxonomies( array(), 'objects' );
     }
