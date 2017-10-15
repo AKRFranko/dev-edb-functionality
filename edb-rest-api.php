@@ -24,6 +24,12 @@ function edb_rest_get_thumbnail_colors($post){
 
 }
 
+function edb_rest_get_product_metabox($post){
+    
+    return rwmb_meta($post);
+
+}
+
 
 function edb_rest_get_designer_meta($user){
   if($user){
@@ -97,6 +103,13 @@ function edb_rest_register_fields(){
     array(
       'get_callback'    => 'edb_rest_get_customer_meta',
       'update_callback' => 'edb_rest_update_customer_meta',
+      'schema'          => null,
+      )
+  );
+  register_rest_field( 'product',
+   'meta_box',  //key-name in json response
+    array(
+      'get_callback'    => 'edb_rest_get_product_metabox',
       'schema'          => null,
       )
   );
