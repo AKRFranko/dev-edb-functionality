@@ -117,6 +117,13 @@ function edb_rest_register_fields(){
       'schema'          => null,
       )
   );
+  register_rest_field( 'product_variation',
+   'meta_box',  //key-name in json response
+    array(
+      'get_callback'    => 'edb_rest_get_product_metabox',
+      'schema'          => null,
+      )
+  );
   
   register_rest_field( 'edb_features',
   'subtitle',  //key-name in json response
