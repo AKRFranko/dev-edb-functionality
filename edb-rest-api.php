@@ -28,11 +28,7 @@ function edb_rest_get_product_metabox($post){
     $meta = array();
     if($post['meta_data']){
       foreach($post['meta_data'] as $k  => $v){
-        if($v['key']){
-          $meta[$v['key']]  =  $v['value'];
-        }else{
-          $meta[] = $v;
-        }
+        $meta[$v->key]  =  $v->value;
       }
     }
     return $meta;
