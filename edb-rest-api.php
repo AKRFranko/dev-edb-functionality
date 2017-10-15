@@ -25,9 +25,14 @@ function edb_rest_get_thumbnail_colors($post){
 }
 
 function edb_rest_get_product_metabox($post){
-    
+    $meta = array();
+    if($post['meta_data']){
+      foreach($post['meta_data'] as $k  => $v){
+        $meta[]=$v;
+      }
+    }
+    $post['meta_box'] = $meta;
     return $post;
-
 }
 
 
