@@ -26,7 +26,7 @@ function edb_rest_get_thumbnail_colors($post){
 
 function edb_rest_get_product_metabox($post){
     
-    return rwmb_meta($post);
+    return rwmb_meta($post['id']);
 
 }
 
