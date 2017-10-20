@@ -126,7 +126,7 @@ function edb_rest_register_fields(){
       )
   );
   register_rest_field( 'product',
-   'variations_data',  //key-name in json response
+   'variation_data',  //key-name in json response
     array(
       'get_callback'    => 'edb_rest_get_product_variations',
       'schema'          => null,
