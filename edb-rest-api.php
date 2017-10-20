@@ -34,6 +34,11 @@ function edb_rest_get_product_metabox($post){
           if($image){
             $meta[$v->key] = array("src"=>$image[0] );
           }
+        }else if($v->key == 'edb_anatomy_en' || $v->key == 'edb_anatomy_fr'){
+          $image = wp_get_attachment_image_src($v->value);
+          if($image){
+            $meta[$v->key] = array("src"=>$image[0] );
+          }
         }else{
           $meta[$v->key]  =  $v->value;
         }
