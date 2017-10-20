@@ -29,6 +29,9 @@ function edb_rest_get_product_metabox($post){
     if($post['meta_data']){
       foreach($post['meta_data'] as $k  => $v){
         $meta[$v->key]  =  $v->value;
+        if($k === 'db_wireframe'){
+          $meta[$v->key] = wp_get_attachment_image_src($v->value);
+        }
       }
     }
     return $meta;
