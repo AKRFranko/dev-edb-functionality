@@ -98,9 +98,12 @@ function edb_rest_get_product_variations($post){
     $factory = new WC_Product_Factory();
     $product = $factory->get_product( $post['id'] );
     if($product->get_type() === 'variable'){
-      return $product->get_available_variations();  
+      $variations = $product->get_available_variations();  
+      foreach($variations as $k => $v){
+        $variations[$k]['parent_product_id'] = $post['id'];
+      }
+      return $variations;
     }
-    
   }
 }
 
