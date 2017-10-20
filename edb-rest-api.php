@@ -93,6 +93,15 @@ function edb_rest_update_customer_meta( $meta , $user){
   }
 };
 
+function edb_rest_get_product_variations($post){
+  
+  if($post){
+    $factory = new WC_Product_Factory();
+    $product = $factory->get_product( $post['id'] );
+    return $product->get_available_variations();
+  }
+}
+
 function edb_rest_register_fields(){
   register_rest_field( 'user',
    'designer_meta',  //key-name in json response
@@ -117,6 +126,34 @@ function edb_rest_register_fields(){
       'schema'          => null,
       )
   );
+  register_rest_field( 'product',
+   'meta_box',  //key-name in json response
+    array(
+      'get_callback'    => 'edb_rest_get_product_variations',
+      'schema'          => null,
+      )
+  );
+  // public function get_available_variations() {
+  //     $available_variations = array();
+
+  //     foreach ( $this->get_children() as $child_id ) {
+  //         $variation = wc_get_product( $child_id );
+
+  //         // Hide out of stock variations if 'Hide out of stock items from the catalog' is checked
+  //         if ( ! $variation->exists() || ( 'yes' === get_option( 'woocommerce_hide_out_of_stock_items' ) && ! $variation->is_in_stock() ) ) {
+  //             continue;
+  //         }
+
+  //         // Filter 'woocommerce_hide_invisible_variations' to optionally hide invisible variations (disabled variations and variations with empty price)
+  //         if ( apply_filters( 'woocommerce_hide_invisible_variations', false, $this->get_id(), $variation ) && ! $variation->variation_is_visible() ) {
+  //             continue;
+  //         }
+
+  //         $available_variations[] = $this->get_available_variation( $variation );
+  //     }
+
+  //     return $available_variations;
+  // }
   register_rest_field( 'product_variation',
    'meta_box',  //key-name in json response
     array(
