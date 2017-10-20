@@ -138,6 +138,7 @@ function edb_rest_register_fields(){
       'schema'          => null,
       )
   );
+  
   // public function get_available_variations() {
   //     $available_variations = array();
 

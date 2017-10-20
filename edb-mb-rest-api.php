@@ -43,7 +43,9 @@ class MB_Rest_API {
           continue;
         }
         $field_value = rwmb_get_value( $field['id'] );
-
+        if($field['type'] == 'image'){
+          $field_value = wp_get_attachment_image_src( $field_value );
+        }
         /*
          * Make sure values of file/image fields are always indexed 0, 1, 2, ...
          * @link https://github.com/malfborger/mb-rest-api/commit/31aa8fa445c188e8a71ebff80027acbcaa0fd268
