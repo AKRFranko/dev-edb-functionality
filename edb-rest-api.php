@@ -94,7 +94,6 @@ function edb_rest_update_customer_meta( $meta , $user){
 };
 
 function edb_rest_get_product_variations($post){
-  
   if($post){
     $factory = new WC_Product_Factory();
     $product = $factory->get_product( $post['id'] );
@@ -127,7 +126,7 @@ function edb_rest_register_fields(){
       )
   );
   register_rest_field( 'product',
-   'meta_box',  //key-name in json response
+   'variations_data',  //key-name in json response
     array(
       'get_callback'    => 'edb_rest_get_product_variations',
       'schema'          => null,
