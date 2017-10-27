@@ -232,13 +232,15 @@ function edb_reset(){
   wc_update_product_stock( 469, 1, 'set');
   return true;
 }
-
+function is_a_valid_email($email) {
+    return !!filter_var($email, FILTER_VALIDATE_EMAIL);
+}
 
 function edb_register($data){
   
   
   $id = wp_insert_user( array(
-    'user_login'  => empty($data['email']) ? null : $data['username'],
+    'user_login'  => is_a_valid_email($data['email']) ? null : $data['username'],
     'user_email'  => $data['email'],
     'user_pass'   => $data['password']
   ));
