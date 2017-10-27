@@ -240,7 +240,7 @@ function edb_register($data){
   
   
   $id = wp_insert_user( array(
-    'user_login'  => is_a_valid_email($data['email']) ? null : $data['username'],
+    'user_login'  => !is_a_valid_email($data['email']) ? null : $data['username'],
     'user_email'  => $data['email'],
     'user_pass'   => $data['password']
   ));
