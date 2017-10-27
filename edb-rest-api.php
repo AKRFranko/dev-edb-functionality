@@ -241,12 +241,14 @@ function edb_register($data){
   if(!is_a_valid_email($data['email'])){
     return new WP_Error( 'invalid_user_registration', "<strong>Email</strong> missing or invalid.", array('status'=>401));
   }
+  if($data['password'] && $data['password_confirm'] && $data['password'] != $data['password_confirm']){
+    return new WP_Error( 'invalid_user_registration', "<strong>Password</strong> passwords do not match.", array('status'=>401));
+  }
   $id = wp_insert_user( array(
     'user_login'  => $data['username'],
     'user_email'  => $data['email'],
     'user_pass'   => $data['password']
   ));
-  
   if (is_wp_error($id)){
     return new WP_Error( $id->get_error_code(), $id->get_error_message(), array( 'status' => 401));
   }
