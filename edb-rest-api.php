@@ -238,15 +238,17 @@ function is_a_valid_email($email) {
 
 function edb_register($data){
   
-  
+  if(!is_a_valid_email($data['email'])){
+    return new WP_Error( 'invalid_user_registration', "<strong>Email</strong> missing.", array('status'=>402));
+  }
   $id = wp_insert_user( array(
-    'user_login'  => !is_a_valid_email($data['email']) ? null : $data['username'],
+    'user_login'  => $data['username'],
     'user_email'  => $data['email'],
     'user_pass'   => $data['password']
   ));
   
   if (is_wp_error($id)){
-    return new WP_Error( $id->get_error_code(), $id->get_error_message(), array( 'status' => 403 ));
+    return new WP_Error( $id->get_error_code(), $id->get_error_message(), array( 'status' => 402));
   }
   return edb_login( $data );
 }
