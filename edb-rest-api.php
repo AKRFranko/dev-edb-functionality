@@ -246,7 +246,7 @@ function edb_register($data){
   ));
   
   if (is_wp_error($id)){
-    return $id;
+    return new WP_Error( $id->get_error_code(), $id->get_error_message(), array( 'status' => 403 ));
   }
   return edb_login( $data );
 }
