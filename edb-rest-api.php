@@ -1,7 +1,5 @@
 <?php
 
-require_once( ABSPATH.'wp-admin/includes/user.php' );
-
 function edb_rest_get_thumbnail_url($post){
     if(has_post_thumbnail($post['id'])){
         $imgArray = wp_get_attachment_image_src( get_post_thumbnail_id( $post['id'] ), 'full' ); // replace 'full' with 'thumbnail' to get a thumbnail
@@ -263,8 +261,8 @@ function edb_unregister($data){
   if (is_wp_error($id)){
     return new WP_Error( $id->get_error_code(), $id->get_error_message(), array( 'status' => 401));
   }
-  wp_logout();
-  return wp_delete_user( $id );
+  return wp_logout();
+  
 }
 
 //integrate with WP-REST-API
