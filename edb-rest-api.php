@@ -242,10 +242,10 @@ function is_a_valid_email($email) {
 function edb_register($data){
   
   if(!is_a_valid_email($data['email'])){
-    return new WP_Error( 'invalid_user_registration', "<strong>Email</strong> missing or invalid.", array('status'=>401));
+    return new WP_Error( 'invalid_user_registration', "Email: missing or invalid.", array('status'=>401));
   }
   if($data['password'] && $data['password_confirm'] && $data['password'] != $data['password_confirm']){
-    return new WP_Error( 'invalid_user_registration', "<strong>Password</strong> passwords do not match.", array('status'=>401));
+    return new WP_Error( 'invalid_user_registration', "Password: passwords do not match.", array('status'=>401));
   }
   $id = wp_insert_user( array(
     'user_login'  => $data['username'],
@@ -256,6 +256,23 @@ function edb_register($data){
     return new WP_Error( $id->get_error_code(), $id->get_error_message(), array( 'status' => 401));
   }
   return edb_login( $data );
+}
+
+function edb_unregister($data){
+  
+  if(!is_a_valid_email($data['email'])){
+    return new WP_Error( 'invalid_user_registration', "Email: missing or invalid.", array('status'=>401));
+  }
+  if($data['password'] && $data['password_confirm'] && $data['password'] != $data['password_confirm']){
+    return new WP_Error( 'invalid_user_registration', "Password: passwords do not match.", array('status'=>401));
+  }
+  
+  $id = edb_login( $data );
+  if (is_wp_error($id)){
+    return new WP_Error( $id->get_error_code(), $id->get_error_message(), array( 'status' => 401));
+  }
+  wp_logout();
+  return wp_delete_user( $id );
 }
 
 //integrate with WP-REST-API
