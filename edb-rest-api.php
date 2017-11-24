@@ -335,7 +335,6 @@ add_action( 'rest_api_init', function() {
     'methods' => 'POST',
     'callback' => 'edb_unregister',
   ));
-  
   register_rest_route( 'wp/v2', '/reset', array(
     'methods' => 'POST',
     'callback' => 'edb_reset',
