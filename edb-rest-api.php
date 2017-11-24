@@ -264,7 +264,7 @@ function edb_unregister($data){
     return new WP_Error( $id->get_error_code(), $id->get_error_message(), array( 'status' => 401));
   }
   wp_logout();
-  require_once(ABSPATH.'wp-admin/includes/user.php' );
+  require_once( ABSPATH.'wp-admin/includes/user.php' );
   return wp_delete_user( $id );
 }
 
