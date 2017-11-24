@@ -314,27 +314,34 @@ add_action( 'rest_api_init', function() {
   
   
   remove_filter( 'rest_pre_serve_request', 'rest_send_cors_headers' );
+  
   add_filter('jwt_auth_token_before_dispatch', 'edb_populate_jwt', 10, 2);
+  
   register_rest_route( 'wp/v2', '/authenticated', array(
     'methods' => 'GET',
     'callback' => 'edb_get_auth_user',
   ));
+  
   register_rest_route( 'wp/v2', '/login', array(
     'methods' => 'POST',
     'callback' => 'edb_login',
   ));
+  
   register_rest_route( 'wp/v2', '/logout', array(
     'methods' => 'POST',
     'callback' => 'edb_logout',
   ));
+  
   register_rest_route( 'wp/v2', '/register', array(
     'methods' => 'POST',
     'callback' => 'edb_register',
   ));
+  
   register_rest_route( 'wp/v2', '/unregister', array(
     'methods' => 'POST',
     'callback' => 'edb_unregister',
   ));
+  
   register_rest_route( 'wp/v2', '/reset', array(
     'methods' => 'POST',
     'callback' => 'edb_reset',
