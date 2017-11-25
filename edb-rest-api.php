@@ -349,8 +349,9 @@ add_action( 'rest_api_init', function() {
     header_remove('Access-Control-Allow-Credentials');
     header_remove('Access-Control-Expose-Headers');
     header('Access-Control-Allow-Credentials: true');
-    header('Access-Control-Allow-Headers: Authorization, X-Requested-With, Content-Type, Content-Disposition, X-Wp-TotalPages');
+    header('Access-Control-Allow-Headers: Authorization, X-Requested-With, Content-Type, Content-Disposition');
     header('Access-Control-Allow-Methods: HEAD, OPTIONS, GET, PUT, POST, PATCH, DELETE');
+    header('Access-Control-Expose-Headers: X-WP-Total, X-WP-TotalPages');
     $aheaders = apache_request_headers();
     $name = @$aheaders['Origin'];
     if($name == 'http://edb.akr.club' || $name == 'http://edb.akr.club:3000'){
