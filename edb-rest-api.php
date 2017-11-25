@@ -354,7 +354,7 @@ add_action( 'rest_api_init', function() {
     header('Access-Control-Expose-Headers: X-WP-Total, X-WP-TotalPages');
     $aheaders = apache_request_headers();
     $name = @$aheaders['Origin'];
-    if($name == 'http://edb.akr.club' || $name == 'http://edb.akr.club:3000'){
+    if($name == 'https://edb.akr.club' || $name == 'https://edb.akr.club:3000'){
       header("Access-Control-Allow-Origin: $name");  
     }else{
       header_remove('Access-Control-Allow-Origin');
