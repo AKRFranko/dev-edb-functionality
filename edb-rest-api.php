@@ -359,7 +359,9 @@ add_action( 'rest_api_init', function() {
     }else{
       header_remove('Access-Control-Allow-Origin');
     }
-    
+    if($_SERVER['REQUEST_METHOD'] == 'OPTIONS'){
+      return;
+    }
     
     // 
     // var_dump($_SERVER);
