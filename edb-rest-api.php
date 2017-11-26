@@ -362,7 +362,7 @@ add_action( 'rest_api_init', function() {
     
     
     // 
-    // var_dump($_SERVER);
+    var_dump($_SERVER);
     return $value;
   });
 }, 15 );
