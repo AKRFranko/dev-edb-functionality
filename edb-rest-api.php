@@ -343,15 +343,15 @@ add_action( 'rest_api_init', function() {
   // ));
   
   add_filter( 'rest_pre_serve_request', function( $value ) {
-    header_remove('Access-Control-Allow-Headers');
+    // header_remove('Access-Control-Allow-Headers');
     header_remove('Access-Control-Allow-Origin');
-    header_remove('Access-Control-Allow-Methods');
-    header_remove('Access-Control-Allow-Credentials');
-    header_remove('Access-Control-Expose-Headers');
+    // header_remove('Access-Control-Allow-Methods');
+    // header_remove('Access-Control-Allow-Credentials');
+    // header_remove('Access-Control-Expose-Headers');
     header('Access-Control-Allow-Credentials: true');
-    header('Access-Control-Allow-Headers: Authorization, X-Requested-With, Content-Type, Content-Disposition');
-    header('Access-Control-Allow-Methods: HEAD, OPTIONS, GET, PUT, POST, PATCH, DELETE');
-    header('Access-Control-Expose-Headers: X-WP-Total, X-WP-TotalPages');
+    // header('Access-Control-Allow-Headers: Authorization, X-Requested-With, Content-Type, Content-Disposition');
+    // header('Access-Control-Allow-Methods: HEAD, OPTIONS, GET, PUT, POST, PATCH, DELETE');
+    // header('Access-Control-Expose-Headers: X-WP-Total, X-WP-TotalPages');
     $aheaders = apache_request_headers();
     $name = @$aheaders['Origin'];
     if($name == 'https://edb.akr.club' || $name == 'https://edb.akr.club:3000'){
@@ -359,9 +359,7 @@ add_action( 'rest_api_init', function() {
     }else{
       header_remove('Access-Control-Allow-Origin');
     }
-    if($_SERVER['REQUEST_METHOD'] == 'OPTIONS'){
-      die();
-    }
+    
     
     // 
     // var_dump($_SERVER);
