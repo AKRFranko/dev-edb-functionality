@@ -47,12 +47,9 @@ class MB_Rest_API {
       foreach ( $meta_box->fields as $field ) {
         
         if ( empty( $field['id'] ) ) {
-          var_dump('FIELD EMPTY');
           continue;
         }
-        var_dump($field);
-        
-        
+
         $field_value = rwmb_get_value( $field['id'] );
         
         /*
