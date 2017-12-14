@@ -220,6 +220,20 @@ function edb_rest_register_fields(){
       
       )
   );
+  register_rest_field( 'post',
+  'meta_box',  //key-name in json response
+    array(
+      'get_callback'    => 'edb_rest_get_metabox',
+      
+      )
+  );
+  register_rest_field( 'page',
+  'meta_box',  //key-name in json response
+    array(
+      'get_callback'    => 'edb_rest_get_metabox',
+      
+      )
+  );
 }
 
 
