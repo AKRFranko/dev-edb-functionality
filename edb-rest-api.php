@@ -47,6 +47,7 @@ function edb_rest_get_metabox($post){
                   'src' =>$value['full_url'],
                   'colors'=>get_post_meta($id, 'color_palette_hex',false)
                 );
+                
               }
               $field_value[$k]=$value;
             }
