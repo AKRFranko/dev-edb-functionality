@@ -34,16 +34,17 @@ class MB_Rest_API {
   public function get_post_meta( $object ) {
     $output     = array();
     $meta_boxes = rwmb_get_registry( 'meta_box' )->all();
-    var_dump("PROCESSING");      
-    var_dump($meta_boxes);      
+
     
 
     foreach ( $meta_boxes as $meta_box ) {
       if ( ! in_array( $object['type'], $meta_box->post_types, true ) ) {
+        var_dump("SKIP OBJET TYPE: ".$object['type']);      
         continue;
       }
       
       foreach ( $meta_box->fields as $field ) {
+        var_dump('FIELD');
         if ( empty( $field['id'] ) ) {
           continue;
         }
