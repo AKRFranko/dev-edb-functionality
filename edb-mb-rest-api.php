@@ -37,6 +37,7 @@ class MB_Rest_API {
     
     foreach ( $meta_boxes as $meta_box ) {
       if ( ! in_array( $object['type'], $meta_box->post_types, true ) ) {
+        var_dump('NOT SUPPOERT');
         continue;
       }
       foreach ( $meta_box->fields as $field ) {
@@ -56,7 +57,7 @@ class MB_Rest_API {
         $output[ $field['id'] ] = $field_value;
       }
     }
-    var_dump($object);
+    // var_dump($object);
     return $ouput;
   }
 
