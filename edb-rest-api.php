@@ -38,6 +38,7 @@ function edb_rest_get_metabox($post){
         }
       }
   }
+  var_dump($post);
   return $post->meta_box;
 }
 
