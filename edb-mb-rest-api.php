@@ -55,8 +55,8 @@ class MB_Rest_API {
         $output[ $field['id'] ] = $field_value;
       }
     }
-    $output['debug'] = $meta_box->fields;
-    return $output;
+    // $output['debug'] =;
+    return $meta_box->fields;
   }
 
   /**
