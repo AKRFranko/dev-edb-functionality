@@ -65,7 +65,7 @@ class MB_Rest_API {
     
     
     
-    var_dump($output);
+    
     return $ouput;
   }
 
