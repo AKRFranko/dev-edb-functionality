@@ -34,12 +34,13 @@ class MB_Rest_API {
   public function get_post_meta( $object ) {
     $output     = array();
     $meta_boxes = rwmb_get_registry( 'meta_box' )->all();
-
+    $allowed_types = $meta_box->post_types;
+    $allowed_types[]='post';
+    $allowed_types[]='page';
     
 
     foreach ( $meta_boxes as $meta_box ) {
-      if ( ! in_array( $object['type'], $meta_box->post_types, true ) ) {
-        var_dump("SKIP OBJET TYPE: ".$object['type']." ID: ".$object['id']);      
+      if ( ! in_array( $object['type'], $allowed_types, true ) ) {
         continue;
       }
       
