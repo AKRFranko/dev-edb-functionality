@@ -46,14 +46,13 @@ class MB_Rest_API {
       foreach ( $meta_box->fields as $field ) {
         
         if ( empty( $field['id'] ) ) {
+          var_dump('FIELD EMPTY');
           continue;
         }
-        
+        var_dump($field);
         
         
         $field_value = rwmb_get_value( $field['id'] );
-        var_dump('FIELD VALUE');
-        var_dump($field_value);
         
         /*
          * Make sure values of file/image fields are always indexed 0, 1, 2, ...
