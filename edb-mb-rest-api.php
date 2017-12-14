@@ -62,6 +62,7 @@ class MB_Rest_API {
         $output[ $field['id'] ] = $field_value;
       }
     }
+    
     var_dump('META RETURNED');
     var_dump($output);
     return $ouput;
