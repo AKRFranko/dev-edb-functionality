@@ -42,10 +42,14 @@ function edb_rest_get_metabox($post){
               unset($value['ID']);
               $value['id']=$id;
               if(preg_match('/image/',$field['type'])){
+                $colors = get_post_meta($id, 'color_palette_hex',false);
+                if(is_array($colors) && is_array($colors[0])){
+                  $colors = $colors[0];
+                }
                 $value = array(
                   'id' =>$id,
                   'src' =>$value['full_url'],
-                  'colors'=>get_post_meta($id, 'color_palette_hex',false)
+                  'colors'=>$colors
                 );
                 
               }
