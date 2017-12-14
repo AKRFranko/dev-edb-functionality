@@ -108,7 +108,7 @@ function edb_register_meta_boxes( $meta_boxes ) {
     $meta_boxes[] = array(
         'id'         => 'EDBPostGallery',
         'title'      => __( 'Gallery', 'edb' ),
-        'post_types' =>  array('posts','pages'),
+        'post_types' =>  array('post'),
         'context'    => 'normal',
         'priority'   => 'high',
         'fields' => array(
