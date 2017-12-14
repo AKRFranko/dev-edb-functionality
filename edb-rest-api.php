@@ -38,7 +38,7 @@ function edb_rest_get_metabox($post){
         }
       }
   }
-  return $post;
+  return $post->meta_box;
 }
 
 function edb_rest_get_product_metabox($post){
