@@ -37,9 +37,6 @@ class MB_Rest_API {
     
     foreach ( $meta_boxes as $meta_box ) {
       if ( ! in_array( $object['type'], $meta_box->post_types, true ) ) {
-        var_dump('NOT SUPPOERT 1' );
-        var_dump($object);
-        
         continue;
       }
       foreach ( $meta_box->fields as $field ) {
@@ -53,12 +50,13 @@ class MB_Rest_API {
          * @link https://github.com/malfborger/mb-rest-api/commit/31aa8fa445c188e8a71ebff80027acbcaa0fd268
          */
         if ( is_array( $field_value ) && in_array( $field['type'], array( 'media', 'file', 'file_upload', 'file_advanced', 'image', 'image_upload', 'image_advanced', 'plupload_image', 'thickbox_image' ), true ) ) {
-          
+          var_dump($field_value);      
           $field_value = array_values( $field_value );
         }
         $output[ $field['id'] ] = $field_value;
       }
     }
+    
     return $ouput;
   }
 
