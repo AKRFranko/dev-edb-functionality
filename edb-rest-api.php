@@ -29,8 +29,7 @@ function edb_rest_get_metabox($post){
   $mb = array();
   foreach ($meta_boxes as $meta_box) {
       $meta_box = RW_Meta_Box::normalize($meta_box);
-      var_dump('edb_rest_get_metabox');
-      var_dump($meta_box['post_types']);
+      
       if (!in_array($post->post_type, $meta_box['post_types'])) {
           continue;
       }
