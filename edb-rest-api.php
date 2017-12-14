@@ -25,7 +25,7 @@ function edb_rest_get_thumbnail_colors($post){
 function edb_rest_get_metabox($post){
   var_dump('edb_rest_get_metabox');
   $meta_boxes = RWMB_Core::get_meta_boxes();
-  $post->meta_box = array();
+  $mb = array();
   foreach ($meta_boxes as $meta_box) {
       $meta_box = RW_Meta_Box::normalize($meta_box);
       
@@ -34,12 +34,12 @@ function edb_rest_get_metabox($post){
       // }
       foreach ($meta_box['fields'] as $field) {
         if (!empty($field['id'])) {
-          $post->meta_box[ $field['id'] ] = rwmb_meta(  $field['id'], $field, $post->ID );
+          $mb[ $field['id'] ] = rwmb_meta(  $field['id'], $field, $post->ID );
         }
       }
   }
-  var_dump($post);
-  return $post->meta_box;
+  // var_dump($post);
+  return $mb;
 }
 
 function edb_rest_get_product_metabox($post){
