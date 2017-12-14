@@ -62,9 +62,7 @@ class MB_Rest_API {
           
           $field_value = array_values( $field_value );
         }
-        if($field['id'] == 'edb_gallery_images'){
-          var_dump($field_value);
-        }
+        
         $output[ $field['id'] ] = $field_value;
       }
     }
