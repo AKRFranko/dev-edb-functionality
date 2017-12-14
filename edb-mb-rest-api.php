@@ -39,7 +39,7 @@ class MB_Rest_API {
 
     foreach ( $meta_boxes as $meta_box ) {
       if ( ! in_array( $object['type'], $meta_box->post_types, true ) ) {
-        var_dump("SKIP OBJET TYPE: ".$object['type']);      
+        var_dump("SKIP OBJET TYPE: ".$object['type']." ID: ".$object['id']);      
         continue;
       }
       
