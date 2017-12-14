@@ -34,7 +34,11 @@ function edb_rest_get_metabox($post){
       }
       foreach ($meta_box['fields'] as $field) {
         if (!empty($field['id'])) {
-          $mb[ $field['id'] ] = rwmb_meta(  $field['id'], $field, $post['id'] );
+          $field_value = rwmb_meta(  $field['id'], $field, $post['id'] );
+          if ( is_array( $field_value ) && in_array( $field['type'], array( 'media', 'file', 'file_upload', 'file_advanced', 'image', 'image_upload', 'image_advanced', 'plupload_image', 'thickbox_image' ), true ) ) {
+            $field_value = array_values( $field_value );
+          }
+          $mb[ $field['id'] ] =$field_value;
         }
       }  
       
