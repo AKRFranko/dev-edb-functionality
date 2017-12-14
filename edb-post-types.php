@@ -104,6 +104,25 @@ add_action( 'init', 'edb_register_faqs_post_type', 0 );
 function edb_register_meta_boxes( $meta_boxes ) {
     $prefix = 'edb_';
     // 1st meta box
+    
+    $meta_boxes[] = array(
+        'id'         => 'EDBPostGallery',
+        'title'      => __( 'Gallery', 'edb' ),
+        'post_types' =>  array('post','page'),
+        'context'    => 'normal',
+        'priority'   => 'high',
+        'fields' => array(
+            array(
+                'name'  => __( 'Gallery Images', 'edb' ),
+                'id'    => $prefix . 'gallery_images',
+                'type'  => 'image_advanced',
+                'multiple'=>true,
+                'class' => 'gallery-images'
+            )
+        )
+    );
+    
+    
     $meta_boxes[] = array(
         'id'         => 'EDBSlides',
         'title'      => __( 'EDB', 'edb' ),
