@@ -37,8 +37,8 @@ class MB_Rest_API {
     $allowed_types = $meta_box->post_types;
     $allowed_types[]='post';
     $allowed_types[]='page';
-    var_dump('TYPES');
-    var_dump($allowed_types);
+    // var_dump('TYPES');
+    // var_dump($allowed_types);
 
     foreach ( $meta_boxes as $meta_box ) {
       if ( ! in_array( $object['type'], $allowed_types, true ) ) {
@@ -50,7 +50,7 @@ class MB_Rest_API {
         if ( empty( $field['id'] ) ) {
           continue;
         }
-        
+        var_dump('FIELD '.$field['id']);
         $field_value = rwmb_get_value( $field['id'] );
         
         /*
