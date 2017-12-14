@@ -61,14 +61,14 @@ class MB_Rest_API {
           $field_value = array_values( $field_value );
           
         }
-        var_dump($field['id'] );
-        var_dump($field_value);
+        
         
         $output[ $field['id'] ] = $field_value;
       }
     }
     
-    
+    var_dump('OUTPUT');
+    var_dump($output);
     return $ouput;
   }
 
