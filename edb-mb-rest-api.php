@@ -37,8 +37,6 @@ class MB_Rest_API {
     $allowed_types = $meta_box->post_types;
     $allowed_types[]='post';
     $allowed_types[]='page';
-    // var_dump('TYPES');
-    // var_dump($allowed_types);
 
     foreach ( $meta_boxes as $meta_box ) {
       if ( ! in_array( $object['type'], $allowed_types, true ) ) {
@@ -51,9 +49,7 @@ class MB_Rest_API {
           continue;
         }
         
-        
         $field_value = rwmb_get_value( $field['id'] );
-        
         /*
          * Make sure values of file/image fields are always indexed 0, 1, 2, ...
          * @link https://github.com/malfborger/mb-rest-api/commit/31aa8fa445c188e8a71ebff80027acbcaa0fd268
