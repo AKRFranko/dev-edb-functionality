@@ -37,6 +37,7 @@ class MB_Rest_API {
     // $allowed_types = ;
     // $allowed_types[]='post';
     // $allowed_types[]='page';
+    var_dump('TYPES');
     var_dump($meta_box->post_types);
 
     foreach ( $meta_boxes as $meta_box ) {
@@ -151,7 +152,6 @@ class MB_Rest_API {
    * @return array
    */
   protected function get_types( $type = 'post' ) {
-    var_dump("get_types $type");
     $types = get_post_types( array( ), 'objects' );
     if ( 'taxonomy' === $type ) {
       $types = get_taxonomies( array(), 'objects' );
