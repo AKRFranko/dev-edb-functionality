@@ -59,6 +59,8 @@ class MB_Rest_API {
         if ( is_array( $field_value ) && in_array( $field['type'], array( 'media', 'file', 'file_upload', 'file_advanced', 'image', 'image_upload', 'image_advanced', 'plupload_image', 'thickbox_image' ), true ) ) {
           
           $field_value = array_values( $field_value );
+          
+        }else{
           var_dump($field['id'] );
           var_dump($field_value);
         }
