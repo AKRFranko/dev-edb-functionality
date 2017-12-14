@@ -1,4 +1,4 @@
-t<?php
+<?php
 /**
 * Plugin Name:       EDB Functionality Plugin
 * Plugin URI:        http://elementdebase.com
