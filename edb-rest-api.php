@@ -387,8 +387,7 @@ add_filter('rest_authentication_errors', function ($result) {
   //   return $result; 
   // }
   // if (!is_user_logged_in() && $_SERVER['REQUEST_URI'] !== "/wp-json/jwt-auth/v1/token" && $_SERVER['REQUEST_URI'] !== "/wp-json/jwt-auth/v1/token/validate") { return new WP_Error('rest_not_logged_in', 'You are not currently logged in.', array('status' => 401)); } return $result; });
-  var_dump($result);
-  die();
+  
   return true;
 });
 
