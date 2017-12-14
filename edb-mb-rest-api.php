@@ -51,7 +51,7 @@ class MB_Rest_API {
         }
 
         $field_value = rwmb_get_value( $field['id'] );
-        var_dump($field['id'] )
+        var_dump($field['id'] );
         var_dump($field_value);
         /*
          * Make sure values of file/image fields are always indexed 0, 1, 2, ...
