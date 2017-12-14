@@ -30,7 +30,8 @@ function edb_rest_get_metabox($post){
   foreach ($meta_boxes as $meta_box) {
       $meta_box = RW_Meta_Box::normalize($meta_box);
       if (!in_array($post->post_type, $meta_box['post_types'])) {
-        var_dump('SKIPPED '.$post['post_type'] );
+        
+        var_dump('SSKIPPED '.$post['post_type'] );
         var_dump($post);
         var_dump(in_array($post->post_type, $meta_box['post_types']));
         // continue;
