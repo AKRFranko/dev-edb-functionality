@@ -29,19 +29,14 @@ function edb_rest_get_metabox($post){
   $mb = array();
   foreach ($meta_boxes as $meta_box) {
       $meta_box = RW_Meta_Box::normalize($meta_box);
-      if (!in_array($post->post_type, $meta_box['post_types'])) {
-        
-        var_dump('SSKIPPED '.$post['post_type'] );
-        var_dump($post);
-        var_dump(in_array($post->post_type, $meta_box['post_types']));
-        // continue;
-      }else{
-        foreach ($meta_box['fields'] as $field) {
-          if (!empty($field['id'])) {
-            $mb[ $field['id'] ] = rwmb_meta(  $field['id'], $field, $post->ID );
-          }
-        }  
+      if (!in_array($post['type'], $meta_box['post_types'])) {
+        continue;
       }
+      foreach ($meta_box['fields'] as $field) {
+        if (!empty($field['id'])) {
+          $mb[ $field['id'] ] = rwmb_meta(  $field['id'], $field, $post['id'] );
+        }
+      }  
       
   }
   
