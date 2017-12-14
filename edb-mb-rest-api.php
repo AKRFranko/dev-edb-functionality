@@ -58,7 +58,6 @@ class MB_Rest_API {
         $output[ $field['id'] ] = $field_value;
       }
     }
-    // var_dump($object);
     return $ouput;
   }
 
