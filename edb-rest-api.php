@@ -44,10 +44,24 @@ function edb_rest_get_metabox($post){
               if(preg_match('/image/',$field['type'])){
                 $value = array(
                   'id' =>$id,
-                  'src' =>$value['full_url']
+                  'src' =>$value['full_url'],
+                  'colors'=>array()
                 );
               }
               $field_value[$k]=$value;
+            }
+          }else{
+            if(preg_match('/image/',$field['type'])){
+              if(!empty($field_value['ID'])){
+                $id = $field_value['ID'];
+              }else if(!empty($field_value['id'])){
+                $id = $field_value['ID'];
+              }
+              $field_value = array(
+                'id' =>$id,
+                'src' =>$field_value['full_url'],
+                'colors'=>array()
+              );
             }
           }
           $mb[ $field['id'] ] = $field_value;
