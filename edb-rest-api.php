@@ -62,6 +62,10 @@ function edb_rest_get_metabox($post){
               }else if(!empty($field_value['id'])){
                 $id = $field_value['ID'];
               }
+              $colors = get_post_meta($id, 'color_palette_hex',false);
+              if(is_array($colors) && is_array($colors[0])){
+                $colors = $colors[0];
+              }
               $field_value = array(
                 'id' =>$id,
                 'src' =>$field_value['full_url'],
