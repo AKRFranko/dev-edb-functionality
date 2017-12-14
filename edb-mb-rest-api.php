@@ -151,9 +151,10 @@ class MB_Rest_API {
    * @return array
    */
   protected function get_types( $type = 'post' ) {
-    $types = get_post_types( array('post','page' ), 'objects' );
+    var_dump("get_types $type");
+    $types = get_post_types( array( ), 'objects' );
     if ( 'taxonomy' === $type ) {
-      $types = get_taxonomies( array('post','page'), 'objects' );
+      $types = get_taxonomies( array(), 'objects' );
     }
     foreach ( $types as $type => $object ) {
       if ( empty( $object->show_in_rest ) ) {
