@@ -37,7 +37,7 @@ class MB_Rest_API {
     
     foreach ( $meta_boxes as $meta_box ) {
       if ( ! in_array( $object['type'], $meta_box->post_types, true ) ) {
-        var_dump('NOT SUPPOERT' );
+        var_dump('NOT SUPPOERT 1' );
         var_dump($object);
         
         continue;
