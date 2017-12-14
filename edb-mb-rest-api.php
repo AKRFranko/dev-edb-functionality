@@ -34,14 +34,14 @@ class MB_Rest_API {
   public function get_post_meta( $object ) {
     $output     = array();
     $meta_boxes = rwmb_get_registry( 'meta_box' )->all();
-    // $allowed_types = ;
-    // $allowed_types[]='post';
-    // $allowed_types[]='page';
+    $allowed_types = $meta_box->post_types;
+    $allowed_types[]='post';
+    $allowed_types[]='page';
     var_dump('TYPES');
-    var_dump($meta_box->post_types);
+    var_dump($allowed_types);
 
     foreach ( $meta_boxes as $meta_box ) {
-      if ( ! in_array( $object['type'], $meta_box->post_types, true ) ) {
+      if ( ! in_array( $object['type'], $allowed_types, true ) ) {
         continue;
       }
       
