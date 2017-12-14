@@ -35,7 +35,7 @@ class MB_Rest_API {
     $output     = array();
     $meta_boxes = rwmb_get_registry( 'meta_box' )->all();
     var_dump("PROCESSING");      
-    var_dump($object);      
+    var_dump($meta_boxes);      
     
     
     foreach ( $meta_boxes as $meta_box ) {
