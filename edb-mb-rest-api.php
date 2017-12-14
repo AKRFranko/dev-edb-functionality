@@ -34,13 +34,13 @@ class MB_Rest_API {
   public function get_post_meta( $object ) {
     $output     = array();
     $meta_boxes = rwmb_get_registry( 'meta_box' )->all();
-    $allowed_types = $meta_box->post_types;
-    $allowed_types[]='post';
-    $allowed_types[]='page';
+    // $allowed_types = ;
+    // $allowed_types[]='post';
+    // $allowed_types[]='page';
     
 
     foreach ( $meta_boxes as $meta_box ) {
-      if ( ! in_array( $object['type'], $allowed_types, true ) ) {
+      if ( ! in_array( $object['type'], $meta_box->post_types, true ) ) {
         continue;
       }
       
@@ -151,12 +151,15 @@ class MB_Rest_API {
    * @return array
    */
   protected function get_types( $type = 'post' ) {
-    $types = get_post_types( array(), 'objects' );
+    $types = get_post_types( array( 'page','post'), 'objects' );
     if ( 'taxonomy' === $type ) {
-      $types = get_taxonomies( array(), 'objects' );
+      $types = get_taxonomies( array('page','post'), 'objects' );
     }
     foreach ( $types as $type => $object ) {
       if ( empty( $object->show_in_rest ) ) {
+        if( $type == 'post' || $type =='page'){
+          continue;
+        }
         unset( $types[ $type ] );
       }
     }
