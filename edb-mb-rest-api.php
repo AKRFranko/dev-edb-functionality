@@ -34,6 +34,7 @@ class MB_Rest_API {
   public function get_post_meta( $object ) {
     $output     = array();
     $meta_boxes = rwmb_get_registry( 'meta_box' )->all();
+    
     foreach ( $meta_boxes as $meta_box ) {
       if ( ! in_array( $object['type'], $meta_box->post_types, true ) ) {
         continue;
@@ -55,8 +56,8 @@ class MB_Rest_API {
         $output[ $field['id'] ] = $field_value;
       }
     }
-    // $output['debug'] =;
-    return $meta_box->fields;
+    var_dump($object);
+    return $ouput;
   }
 
   /**
