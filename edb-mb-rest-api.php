@@ -53,6 +53,7 @@ class MB_Rest_API {
         if($field['id'] == 'edb_gallery_images'){
           var_dump(rwmb_get_value( $field['id'] ));
         }
+        
         $field_value = rwmb_get_value( $field['id'] );
         
         /*
