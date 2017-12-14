@@ -381,15 +381,6 @@ add_action( 'rest_api_init', 'edb_rest_register_fields' );
 // $_SERVER['PHP_AUTH_PW']="cs_dd0dfe3cfd245660bf27f5fc25d8f98dd3dda14c";
 
 add_filter( 'rest_authentication_errors', '__return_true' );
-/* Require authentication for REST API usage */ 
-// add_filter('rest_authentication_errors', function ($result) { 
-  // if (!empty($result)) { 
-  //   return $result; 
-  // }
-  // if (!is_user_logged_in() && $_SERVER['REQUEST_URI'] !== "/wp-json/jwt-auth/v1/token" && $_SERVER['REQUEST_URI'] !== "/wp-json/jwt-auth/v1/token/validate") { return new WP_Error('rest_not_logged_in', 'You are not currently logged in.', array('status' => 401)); } return $result; });
-  
-  // return true;
-// });
 
 
 add_action( 'rest_api_init', function() {
@@ -452,7 +443,7 @@ add_action( 'rest_api_init', function() {
       header_remove('Access-Control-Allow-Origin');
     }
     if($_SERVER['REQUEST_METHOD'] == 'OPTIONS'){
-      return true;
+      // return;
       die();
     }
     
