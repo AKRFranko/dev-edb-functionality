@@ -41,6 +41,12 @@ function edb_rest_get_metabox($post){
               $id = $value['ID'];
               unset($value['ID']);
               $value['id']=$id;
+              if(preg_match('/image/',$field['type'])){
+                $value = array(
+                  'id' =>$id,
+                  'src' =>$value['full_url']
+                );
+              }
               $field_value[$k]=$value;
             }
           }
