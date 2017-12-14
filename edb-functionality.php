@@ -155,18 +155,15 @@ remove_filter('the_content', 'wpautop');
 
 
 
-// // // Load necessary admin files.
-// require_once ABSPATH . 'wp-admin/includes/template.php';
-// require_once ABSPATH . 'wp-admin/includes/post.php';
-// // // Load plugin main class.
-// require_once dirname( __FILE__ ) . '/edb-mb-rest-api.php';
-// $mb_rest_api = new MB_Rest_API;
-
+// // Load necessary admin files.
+require_once ABSPATH . 'wp-admin/includes/template.php';
+require_once ABSPATH . 'wp-admin/includes/post.php';
+// // Load plugin main class.
+require_once dirname( __FILE__ ) . '/edb-mb-rest-api.php';
+$mb_rest_api = new MB_Rest_API;
+add_action( 'rest_api_init', array( $mb_rest_api, 'init' ) );
 
 include 'edb-post-types.php';
-
-
-
 
 // include 'edb-mb-rest-api.php';
 
@@ -174,7 +171,7 @@ include 'edb-rest-api.php';
 include 'edb-wc-rest-api.php';
 include 'edb-user-extras.php';
 
-// add_action( 'rest_api_init', array( $mb_rest_api, 'init' ) );
+
 // add_filter('manage_edb_materials_posts_columns','filter_cpt_columns'  );
 
 // function filter_cpt_columns( $columns ) {
