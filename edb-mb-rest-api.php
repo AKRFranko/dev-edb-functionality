@@ -148,7 +148,7 @@ class MB_Rest_API {
    * @return array
    */
   protected function get_types( $type = 'post' ) {
-    $types = get_post_types( array('page','post'), 'objects' );
+    $types = get_post_types( array(), 'objects' );
     if ( 'taxonomy' === $type ) {
       $types = get_taxonomies( array(), 'objects' );
     }
