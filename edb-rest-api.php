@@ -22,6 +22,11 @@ function edb_rest_get_thumbnail_colors($post){
 
 }
 
+function edb_rest_get_metabox($post){
+  var_dump('edb_rest_get_metabox');
+  var_dump($post);
+}
+
 function edb_rest_get_product_metabox($post){
     $meta = array();
     if($post['meta_data']){
@@ -69,6 +74,8 @@ function edb_rest_update_designer_meta( $v , $user){
   update_usermeta($user->ID, 'edb_user_is_designer',$edb_user_is_designer );
   
 };
+
+
 
 function edb_rest_get_customer_meta($user){
   if($user){
@@ -188,6 +195,13 @@ function edb_rest_register_fields(){
       'get_callback'    => 'edb_rest_get_subtitle',
       'update_callback' => 'edb_rest_update_subtitle',
       'schema'          => null,
+      )
+  );
+  register_rest_field( 'edb_features',
+  'meta_box',  //key-name in json response
+    array(
+      'get_callback'    => 'edb_rest_get_metabox',
+      
       )
   );
 }
